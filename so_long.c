@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/07 12:52:50 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:05:27 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void put_land(void *mlx, void *window, void *land, int rows, char **map)
 	{
 		j = 0;
 		x_cor = 0;
-		while (j < ft_strlen(map[i]) - 1)
+		while (map[i][j] != '\n' && map[i][j] != '\0')
 		{
 			mlx_put_image_to_window(mlx, window, land, x_cor, y_cor);
 			x_cor += 50;
@@ -70,14 +70,6 @@ void put_land(void *mlx, void *window, void *land, int rows, char **map)
 		}
 		i++;
 		y_cor += 50;
-	}
-	j = 0;
-	x_cor = 0;
-	while (j < ft_strlen(map[i]))
-	{
-		mlx_put_image_to_window(mlx, window, land, x_cor, y_cor);
-		x_cor += 50;
-		j++;
 	}
 }
 
@@ -122,7 +114,7 @@ void put_player(void *mlx, void *window, void *player, int rows, char **map)
 	mlx_put_image_to_window(mlx, window, player, pos->x_cor, pos->y_cor);
 }
 
-t_list *get_C_pos(int rows, char **map, char c)
+t_list *get_c_pos(int rows, char **map, char c)
 {
 	int i = 0;
 	int j = 0;
@@ -136,11 +128,10 @@ t_list *get_C_pos(int rows, char **map, char c)
 	{
 		j = 0;
 		x_cor = 0;
-		while (j < ft_strlen(map[i]) - 1)
+		while (map[i][j] != '\n' && map[i][j] != '\0')
 		{
 			if (map[i][j] == c)
 			{
-				printf("%d\t%d\n", x_cor, y_cor);
 				ft_lstadd_front(&data, ft_lstnew(x_cor, y_cor));
 			}
 			j++;
@@ -179,14 +170,32 @@ requirs count_requirs(int rows, char **map)
 
 void put_collectable(void *mlx, void *window, void *collectable, int rows, char **map)
 {
-	t_list *pos = get_position(rows, map, 'C');
-	mlx_put_image_to_window(mlx, window, collectable, pos->x_cor, pos->y_cor);
+	t_list *pos = get_c_pos(rows, map, 'C');
+	while (pos->next)
+	{
+		mlx_put_image_to_window(mlx, window, collectable, pos->x_cor, pos->y_cor);
+		pos = pos->next;
+	}
 }
 
 void put_exit(void *mlx, void *window, void *map_exit, int rows, char **map)
 {
-	t_list *pos = get_position(rows, map, 'E');
-	mlx_put_image_to_window(mlx, window, map_exit, pos->x_cor, pos->y_cor);
+	t_list *pos = get_c_pos(rows, map, 'E');
+	while (pos->next)
+	{
+		mlx_put_image_to_window(mlx, window, map_exit, pos->x_cor, pos->y_cor);
+		pos = pos->next;
+	}
+}
+
+void put_wall(void *mlx, void *window, void *wall, int rows, char **map)
+{
+	t_list *pos = get_c_pos(rows, map, '1');
+	while (pos->next)
+	{
+		mlx_put_image_to_window(mlx, window, wall, pos->x_cor, pos->y_cor);
+		pos = pos->next;
+	}
 }
 
 void put_structure(int rows, char **map, void *mlx, void *window, void *land, void *wall)
@@ -247,12 +256,7 @@ int	main(int ac, char **av)
 			exit(EXIT_FAILURE);
 		map = convert(fd, file);
 		rows = count_map_lines(file);
-		t_list *data = get_C_pos(rows, map, 'C');
-		while (data)
-		{
-			printf("%d\t%d\n", data->x_cor, data->y_cor);
-			data = data->next;
-		}
+		
 		a = check_requirs(map, rows);
 		check_map(map, rows);
 		mlx = mlx_init();
@@ -264,7 +268,9 @@ int	main(int ac, char **av)
 		collectable = mlx_xpm_file_to_image(mlx, "collectable.xpm", width, height);
 		land = mlx_xpm_file_to_image(mlx, "land.xpm", width, height);
 		wall = mlx_xpm_file_to_image(mlx, "pic.xpm", width, height);
-		put_structure(rows, map, mlx, window, land, wall);
+		//put_structure(rows, map, mlx, window, land, wall);
+		put_land(mlx, window, land, rows, map);
+		put_wall(mlx, window, wall, rows, map);
 		put_exit(mlx, window, map_exit, rows, map);
 		put_player(mlx, window, player, rows, map);
 		put_collectable(mlx, window, collectable, rows, map);
