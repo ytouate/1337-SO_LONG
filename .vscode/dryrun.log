@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/ytouate/Desktop/so_long'
+cc -Wall -Wextra -Werror so_long.c gnl.c gnl_utils.c valid_map.c so_long_utils.c -lmlx -framework OpenGL -framework AppKit -o so_long
+make: Leaving directory `/Users/ytouate/Desktop/so_long'
+ 

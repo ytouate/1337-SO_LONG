@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 16:46:37 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/02 12:02:03 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/07 12:51:19 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	ft_strchr(const char *s, int c)
 	return (0);
 }
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 
 {
 	size_t	i;

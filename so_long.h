@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/07 10:56:10 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/07 12:51:26 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ typedef struct valid_map
 }valid_map;
 
 typedef struct s_list {
-	int *pos;
+	int x_cor;
+	int y_cor;
 	struct s_list *next;
 }t_list;
 
@@ -45,6 +46,6 @@ valid_map	check_requirs(char **map, int rows);
 void	error();
 int		ft_strchr(const char *s, int c);
 int		count_map_lines(char *file);
-size_t	ft_strlen(const char *s);
+int	ft_strlen(const char *s);
 
 #endif
