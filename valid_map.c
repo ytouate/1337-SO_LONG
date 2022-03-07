@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 10:20:28 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/03 10:25:49 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:59:13 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void check_map(char **map, int rows)
 	check_map_len(map, rows);
 	return ;
 }
-
 
 valid_map check_requirs(char **map, int rows)
 {

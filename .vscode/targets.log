@@ -6,9 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
 
-# Make data base, printed on Mon Mar  7 12:51:14 2022
+# Make data base, printed on Mon Mar  7 16:51:24 2022
 
 # Variables
 
@@ -38,14 +37,14 @@ CFLAGS = -Wall -Wextra -Werror
 MAKEFILE_LIST :=  Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
-# makefile (from `Makefile', line 14)
-OBJS = so_long.c gnl.c gnl_utils.c valid_map.c so_long_utils.c
+# makefile (from `Makefile', line 16)
+OBJS = ./so_long.c ./gnl.c ./gnl_utils.c ./valid_map.c ./so_long_utils.c ./image_put.c ./position_utils.c ./libft_utils.c 	
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h2m00040n/T/vscode-ipc-f16b9d64-eebc-4065-88fb-9c95e786cb51.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h2m00040n/T/vscode-ipc-0939cb61-77b9-4283-a036-6cc337b66947.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.r6JVjxOECa/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.7hGVLbmCEm/Render
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
@@ -57,7 +56,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.PEcV4yNlo5/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.hQ3yNLY9iH/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -98,6 +97,8 @@ MAKE_VERSION := 3.81
 USER = ytouate
 # makefile
 .DEFAULT_GOAL := all
+# makefile (from `Makefile', line 14)
+NAME = so_long
 # environment
 LESS = -R
 # automatic
@@ -119,15 +120,13 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000008.Electron
+XPC_SERVICE_NAME = com.microsoft.VSCode.1208
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x1015:0:0
-# environment
-COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
@@ -136,8 +135,6 @@ MAKEFILES :=
 PAGER = less
 # environment
 LC_ALL = C
-# environment
-SECURITYSESSIONID = 18722
 # automatic
 ^F = $(notdir $^)
 # default
@@ -149,9 +146,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 50227
+VSCODE_PID = 3956
 # variable set hash-table stats:
-# Load=69/1024=7%, Rehash=0, Collisions=3/97=3%
+# Load=68/1024=7%, Rehash=0, Collisions=3/97=3%
 
 # Pattern-specific Variable Values
 
@@ -159,9 +156,9 @@ VSCODE_PID = 50227
 
 # Directories
 
-# . (device 16777227, inode 2335670): 21 files, no impossibilities.
+# . (device 16777227, inode 2335670): 22 files, no impossibilities.
 
-# 21 files, no impossibilities in 1 directories.
+# 22 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -193,9 +190,9 @@ all:
 # automatic
 # ? := 
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=2/12=17%
-#  commands to execute (from `Makefile', line 16):
-	cc $(CFLAGS) $(OBJS) -lmlx -framework OpenGL -framework AppKit -o so_long
+# Load=8/32=25%, Rehash=0, Collisions=2/13=15%
+#  commands to execute (from `Makefile', line 27):
+	cc $(CFLAGS) $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 	
 
 # Not a target:
@@ -207,8 +204,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
- 
-#  Last modified 2022-03-07 12:50:54
+#  Last modified 2022-03-07 14:58:45
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -224,7 +220,7 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 18):
+#  commands to execute (from `Makefile', line 29):
 	rm -f so_long
 	
 
@@ -241,6 +237,6 @@ clean:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Mar  7 12:51:14 2022
+# Finished Make data base on Mon Mar  7 16:51:24 2022
 
  
