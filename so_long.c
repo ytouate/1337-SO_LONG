@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/07 18:43:34 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/07 19:39:06 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ requirs count_requirs(int rows, char **map)
 	return (a);
 }
 
+int	ft_close(int keycode, mlx_utils a)
+{
+	if (keycode == 0)
+		mlx_destroy_window(a.mlx, a.window);
+	return (0);
+}
 int	main(int ac, char **av)
 {
 	int	fd;
