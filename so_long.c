@@ -6,15 +6,15 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/06 12:59:32 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/07 11:17:46 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 typedef struct  requirs {
-	int E;
-	int C;
+	int	E;
+	int	C;
 } requirs;
 
 
@@ -25,6 +25,7 @@ int get_x(char **map, int rows)
 
 int get_y(int rows)
 {
+	printf("%d\n",        rows);
 	return (rows * 50);
 }
 
@@ -98,14 +99,15 @@ int *get_starting_pos(int rows, char** map)
 	return (0);
 }
 
-int *get_collectable_pos(int rows, char **map)
+int *get_position(int rows, char **map, char c)
 {
-	static int i;
+	int i;
 	int j;
-	static int x_core;
-	static int y_core;
 	int *pos;
+	int x_core;
+	int y_core;
 
+	i = 0;
 	x_core = 0;
 	y_core = 0;
 	pos = malloc(sizeof(int) * 2);
@@ -117,44 +119,10 @@ int *get_collectable_pos(int rows, char **map)
 		x_core = 0;
 		while (j < ft_strlen(map[i]) - 1)
 		{
-			if (map[i][j] == 'C')
+			if (map[i][j] == c)
 			{
 				pos[0] = x_core;
 				pos[1] = y_core;
-				return (pos);
-			}
-			x_core += 50;
-			j++;
-		}
-		y_core += 50;
-		i++;
-	}
-	return (0);
-}
-
-int *get_exit_position(int rows, char **map, int *k, int *x)
-{
-	static int i;
-	int j;
-	int *pos;
-	static int x_core;
-	static int y_core;
-
-	pos = malloc(sizeof(int) * 2);
-	if (!pos)
-		return (0);
-	while (i < rows)
-	{
-		j = *k;
-		x_core = *x;
-		while (j < ft_strlen(map[i]) - 1)
-		{
-			if (map[i][j] == 'E')
-			{
-				pos[0] = x_core;
-				pos[1] = y_core;
-				*k = j + 1;
-				*x = x_core + 50;
 				return (pos);
 			}
 			j++;
@@ -168,7 +136,7 @@ int *get_exit_position(int rows, char **map, int *k, int *x)
 
 void put_player(void *mlx, void *window, void *player, int rows, char **map)
 {
-	int *pos = get_starting_pos(rows, map);
+	int *pos = get_position(rows, map, 'P');
 	mlx_put_image_to_window(mlx, window, player, pos[0], pos[1]);
 }
 
@@ -199,23 +167,40 @@ requirs count_requirs(int rows, char **map)
 
 void put_collectable(void *mlx, void *window, void *collectable, int rows, char **map)
 {
-	int *pos = get_collectable_pos(rows, map);
+	int *pos = get_position(rows, map, 'C');
 	mlx_put_image_to_window(mlx, window, collectable, pos[0], pos[1]);
 }
 
 void put_exit(void *mlx, void *window, void *map_exit, int rows, char **map)
 {
-	requirs a = count_requirs(rows, map);
-	int k = 0;
-	int x = 0;
-	while (--a.E >= 0)
-	{
-		int *pos = get_exit_position(rows, map, &k, &x);
-		mlx_put_image_to_window(mlx, window, map_exit, pos[0], pos[1]);
-	}
+	int *pos = get_position(rows, map, 'E');
+	mlx_put_image_to_window(mlx, window, map_exit, pos[0], pos[1]);
 }
-
-
+void put_structure(int rows, char **map, void *mlx, void *window, void *land, void *wall)
+{
+	int i = 0;
+	int j = 0;
+	int x_core = 0;
+	int y_core = 0;
+	while (i < rows)
+	{
+		j = 0;
+		x_core = 0;
+		while (j < ft_strlen(map[i]) - 1)
+		{
+			mlx_put_image_to_window(mlx, window, land, x_core, y_core);
+			if (map[i][j] == '1')
+			{
+				mlx_put_image_to_window(mlx, window, wall, x_core, y_core);
+			}
+			j++;
+			x_core += 50;
+		}
+		y_core += 50;
+		i++;
+	}
+	mlx_put_image_to_window(mlx, window, wall, x_core, y_core - 50);
+}
 int	main(int ac, char **av)
 {
 	int	fd;
@@ -232,6 +217,7 @@ int	main(int ac, char **av)
 	int h;
 	int w;
 	void *land;
+	void *wall;
 	valid_map a;
 	h = 50;
 	w = 50;
@@ -258,12 +244,15 @@ int	main(int ac, char **av)
 		player = mlx_xpm_file_to_image(mlx, "player.xpm", width, height);
 		collectable = mlx_xpm_file_to_image(mlx, "collectable.xpm", width, height);
 		land = mlx_xpm_file_to_image(mlx, "land.xpm", width, height);
-		put_land(mlx, window, land, rows, map);
+		wall = mlx_xpm_file_to_image(mlx, "pic.xpm", width, height);
+		printf("%d\t%d\n", get_x(map, rows), get_y(rows));
+		put_structure(rows, map, mlx, window, land, wall);
+		//put_land(mlx, window, land, rows, map);
 		put_exit(mlx, window, map_exit, rows, map);
 		put_player(mlx, window, player, rows, map);
 		put_collectable(mlx, window, collectable, rows, map);
 		mlx_loop(mlx);
-		
+
 	}
 	else
 		exit(EXIT_FAILURE);
