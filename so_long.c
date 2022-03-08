@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/08 22:13:09 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/08 23:25:13 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,26 @@ int key_handler(int keycode, mlx_utils *a)
 	return (a->a.rows);
 }
 
+// boarders get_boarders_pos(mlx_utils a)
+// {
+// 	int i;
+// 	int j;
+// 	int x_cor;
+// 	int y_cor;
+
+// 	x_cor = 0;
+// 	y_cor = 0;
+// 	i = 0;
+// 	j = 0;
+// 	while (i < a->a.rows)
+// 	{
+// 		j = 0;
+// 		while (ft_strlen(a.a.map[i][j]) != '\n' && ft_strlen(a.a.map[i][j]) != '\0')
+// 		{
+			
+// 		}
+// 	}
+// }
 int	main(int ac, char **av)
 {
 	int	fd;

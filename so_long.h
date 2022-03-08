@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/08 21:55:36 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/08 22:23:23 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ typedef struct map{
 	int rows;
 	char **map;
 }map;
+
+typedef struct boarders {
+	t_list *boarder;
+	t_list *collectable;
+	t_list *map_exit;
+} boarders;
 
 typedef struct mlx_utils {
 	void	*mlx;
