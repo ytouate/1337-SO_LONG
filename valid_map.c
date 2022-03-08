@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 10:20:28 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/07 14:59:13 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/08 11:14:09 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void check_last_line(char *line)
 	}
 }
 
-void check_map_len(char **map, int rows)
+void check_map_len(map a)
 {
 	int i;
 	int j;
@@ -56,14 +56,14 @@ void check_map_len(char **map, int rows)
 	int p;
 
 	i = 0;
-	j = rows;
+	j = a.rows;
 	k = 0;
-	while (i < rows - 1)
+	while (i < a.rows - 1)
 	{
 		j = 0;
-		k = ft_strlen(map[j]);
-		p = ft_strlen(map[i]);
-		while (j < rows - 1)
+		k = ft_strlen(a.map[j]);
+		p = ft_strlen(a.map[i]);
+		while (j < a.rows - 1)
 		{
 			if (k != p)
 				error();
@@ -71,54 +71,54 @@ void check_map_len(char **map, int rows)
 		}
 		i++;
 	}
-	if (p != ft_strlen(map[rows - 1]) + 1)
+	if (p != ft_strlen(a.map[a.rows - 1]) + 1)
 		error();
 }
 
-void check_map(char **map, int rows)
+void check_map(map a)
 {
 	int i;
 	int j;
 	int k;
 	i = 1;
-	j = rows - 1;
+	j = a.rows - 1;
 
-	check_first_line(map[0]);
-	check_last_line(map[rows - 1]);
+	check_first_line(a.map[0]);
+	check_last_line(a.map[a.rows - 1]);
 	while (i < j)
 	{
-		k = ft_strlen(map[i]) - 2;
-		if (map[i][0] != '1' || map[i][k] != '1')
+		k = ft_strlen(a.map[i]) - 2;
+		if (a.map[i][0] != '1' || a.map[i][k] != '1')
 			error();
 		i++;
 	}
-	check_map_len(map, rows);
+	check_map_len(a);
 	return ;
 }
 
-valid_map check_requirs(char **map, int rows)
+valid_map check_requirs(map a)
 {
-	valid_map	a = {0,0,0};
+	valid_map	b = {0,0,0};
 	int i;
 	int j;
 	int k;
     int p;
 
-	j = rows - 1;
+	j = a.rows - 1;
 	i = 1;
 	while (i < j)
 	{
 		k = 0;
-        p = ft_strlen(map[i]) - 1;
+        p = ft_strlen(a.map[i]) - 1;
 		while (k < p)
 		{
-			if (map[i][k] == 'E')
-				a.map_exit += 1;
-			else if (map[i][k] == 'C')
-				a.collectable += 1;
-			else if (map[i][k] == 'P')
-				a.starting_pos += 1;
-			else if (map[i][k] == '0' || map[i][k] == '1')
+			if (a.map[i][k] == 'E')
+				b.map_exit += 1;
+			else if (a.map[i][k] == 'C')
+				b.collectable += 1;
+			else if (a.map[i][k] == 'P')
+				b.starting_pos += 1;
+			else if (a.map[i][k] == '0' || a.map[i][k] == '1')
 				pass ;
 			else
 				error();	
@@ -126,7 +126,7 @@ valid_map check_requirs(char **map, int rows)
 		}
 		i++;
 	}
-	if (a.collectable >= 1 && a.map_exit >= 1 && a.starting_pos == 1)
-		return (a);
+	if (b.collectable >= 1 && b.map_exit >= 1 && b.starting_pos == 1)
+		return (b);
 	exit(EXIT_FAILURE);
 }

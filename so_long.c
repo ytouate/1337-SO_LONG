@@ -6,96 +6,69 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/07 19:39:06 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/08 21:09:13 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int get_x(char **map, int rows)
+void put_image(mlx_utils mlx_utils, map a)
 {
-	return (ft_strlen(map[rows - 1]) * 50);
+	put_land(mlx_utils, a);
+	put_wall(mlx_utils, a);
+	put_exit(mlx_utils, a);
+	put_player(mlx_utils, a);
+	put_collectable(mlx_utils, a);
 }
-
-int get_y(int rows)
+void move_front(mlx_utils *a)
 {
-	return (rows * 50);
+	t_list *pos = get_c_pos(a->rows, a->map, 'P');
+	printf("%d\t%d\n", pos->x_cor, pos->y_cor);
+	//mlx_put_image_to_window(a->mlx, a->window, a->player, 4000,0);
 }
-
-requirs count_requirs(int rows, char **map)
+int key_handler(int keycode, mlx_utils a)
 {
-	int i;
-	int j;
-
-	requirs a;
-	a.C = 0;
-	a.E = 0;
-	i = 0;
-	while (i < rows)
-	{
-		j = 0;
-		while (j < ft_strlen(map[i]) - 1)
-		{
-			if (map[i][j] == 'E')
-				a.E++;
-			if (map[i][j] == 'C')
-				a.C++;
-			j++;
-		}
-		i++;
-	}
-	return (a);
-}
-
-int	ft_close(int keycode, mlx_utils a)
-{
-	if (keycode == 0)
-		mlx_destroy_window(a.mlx, a.window);
-	return (0);
+	t_list *pos = get_c_pos(a.rows, a.map, 'P');
+	//printf("%d\t%d\n", pos->x_cor, pos->y_cor);
+	if (keycode == 13)
+		move_front(&a);
+	if (keycode == 53)
+		exit(EXIT_SUCCESS);
+	return (a.rows);
 }
 int	main(int ac, char **av)
 {
 	int	fd;
-	char **map; 
-	void *player;
-	int rows;
-	void *map_exit;
-	void *collectable;
+	map a;
 	mlx_utils mlx_utils;
-	int h;
-	int w;
-	void *land;
-	void *wall;
-	valid_map a;
-	h = 50;
-	w = 50;
-	mlx_utils.height= &h;
-	mlx_utils.width = &w;
-	if (ac == 2)
-	{
-		fd = open(av[1], O_RDONLY);
-		if (fd == -1)
-			exit(EXIT_FAILURE);
-		map = convert(fd, av[1]);
-		rows = count_map_lines(av[1]);
-		a = check_requirs(map, rows);
-		check_map(map, rows);
-		mlx_utils.mlx = mlx_init();
-		if (mlx_utils.mlx == NULL)
-			exit(EXIT_FAILURE);
-		mlx_utils.window = mlx_new_window(mlx_utils.mlx, get_x(map, rows), get_y(rows), "so_long");
-		map_exit = mlx_xpm_file_to_image(mlx_utils.mlx, "exit.xpm", mlx_utils.width, mlx_utils.height);
-		player = mlx_xpm_file_to_image(mlx_utils.mlx, "player_up.xpm", mlx_utils.width, mlx_utils.height);
-		collectable = mlx_xpm_file_to_image(mlx_utils.mlx, "collectable.xpm", mlx_utils.width, mlx_utils.height);
-		land = mlx_xpm_file_to_image(mlx_utils.mlx, "land.xpm", mlx_utils.width, mlx_utils.height);
-		wall = mlx_xpm_file_to_image(mlx_utils.mlx, "pic.xpm", mlx_utils.width, mlx_utils.height);
-		put_land(mlx_utils.mlx, mlx_utils.window, land, rows, map);
-		put_wall(mlx_utils.mlx, mlx_utils.window, wall, rows, map);
-		put_exit(mlx_utils.mlx, mlx_utils.window, map_exit, rows, map);
-		put_player(mlx_utils.mlx, mlx_utils.window, player, rows, map);
-		put_collectable(mlx_utils.mlx, mlx_utils.window, collectable, rows, map);
-		mlx_loop(mlx_utils.mlx);
-	}
-	else
+	measures measure;
+	valid_map b;
+
+	measure.width = 50;
+	measure.height = 50;
+	mlx_utils.height= &measure.width ;
+	mlx_utils.width = &measure.height;
+	if (ac != 2)
 		exit(EXIT_FAILURE);
+	fd = open(av[1], O_RDONLY);
+	if (fd == -1)
+		exit(EXIT_FAILURE);
+	a.map = convert(fd, av[1]);
+	a.rows = count_map_lines(av[1]);
+	mlx_utils.rows = count_map_lines(av[1]);
+	mlx_utils.map = convert(fd, av[1]);
+	b = check_requirs(a);
+	check_map(a);
+	mlx_utils.mlx = mlx_init();
+	if (mlx_utils.mlx == NULL)
+		exit(EXIT_FAILURE);
+	mlx_utils.window = mlx_new_window(mlx_utils.mlx, get_x(a), get_y(a), "so_long");
+	mlx_utils.map_exit = mlx_xpm_file_to_image(mlx_utils.mlx, "/Users/ytouate/Desktop/so_long/pics/exit.xpm", mlx_utils.width, mlx_utils.height);
+	mlx_utils.player = mlx_xpm_file_to_image(mlx_utils.mlx, "/Users/ytouate/Desktop/so_long/pics/player_up.xpm", mlx_utils.width, mlx_utils.height);
+	mlx_utils.collectable = mlx_xpm_file_to_image(mlx_utils.mlx, "/Users/ytouate/Desktop/so_long/pics/collectable.xpm", mlx_utils.width, mlx_utils.height);
+	mlx_utils.land = mlx_xpm_file_to_image(mlx_utils.mlx, "/Users/ytouate/Desktop/so_long/pics/land.xpm", mlx_utils.width, mlx_utils.height);
+	mlx_utils.wall = mlx_xpm_file_to_image(mlx_utils.mlx, "/Users/ytouate/Desktop/so_long/pics/pic.xpm", mlx_utils.width, mlx_utils.height);
+	put_image(mlx_utils, a);
+	mlx_key_hook(mlx_utils.window, key_handler, &mlx_utils);
+	mlx_loop(mlx_utils.mlx);	
 }

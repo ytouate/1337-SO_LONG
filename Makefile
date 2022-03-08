@@ -6,11 +6,11 @@
 #    By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/25 15:42:48 by ytouate           #+#    #+#              #
-#    Updated: 2022/03/07 14:58:45 by ytouate          ###   ########.fr        #
+#    Updated: 2022/03/08 21:05:57 by ytouate          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 NAME = so_long
 
 OBJS = \

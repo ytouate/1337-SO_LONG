@@ -6,12 +6,23 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:49:10 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/07 14:40:27 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/08 13:46:44 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-t_list *get_c_pos(int rows, char **map, char c)
+
+int get_x(map a)
+{
+	return (ft_strlen(a.map[a.rows - 1]) * 50);
+}
+
+int get_y(map a)
+{
+	return (a.rows * 50);
+}
+
+t_list *get_c_pos(int rows, char **map ,char c)
 {
 	int i = 0;
 	int j = 0;
@@ -38,39 +49,4 @@ t_list *get_c_pos(int rows, char **map, char c)
 		y_cor += 50;
 	}
 	return (data);
-}
-
-t_list *get_position(int rows, char **map, char c)
-{
-	int i;
-	int j;
-	t_list *pos;
-	int x_cor;
-	int y_cor;
-
-	i = 0;
-	x_cor = 0;
-	y_cor = 0;
-	pos = malloc(sizeof(t_list));
-	if (!pos)
-		return (0);
-	while (i < rows)
-	{
-		j = 0;
-		x_cor = 0;
-		while (j < ft_strlen(map[i]) - 1)
-		{
-			if (map[i][j] == c)
-			{
-				pos->x_cor = x_cor;
-				pos->y_cor = y_cor;
-				return (pos);
-			}
-			j++;
-			x_cor += 50;
-		}
-		i++;
-		y_cor += 50;
-	}
-	return (0);
 }
