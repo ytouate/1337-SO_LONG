@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:49:10 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/08 13:46:44 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/08 21:18:05 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int get_y(map a)
 	return (a.rows * 50);
 }
 
-t_list *get_c_pos(int rows, char **map ,char c)
+t_list *get_c_pos(int rows, char **map, char c)
 {
 	int i = 0;
 	int j = 0;

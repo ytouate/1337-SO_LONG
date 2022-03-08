@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/08 14:38:04 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/08 21:55:36 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,26 @@ typedef struct  requirs {
 	int	C;
 } requirs;
 
-typedef struct mlx_utils {
-	void *mlx;
-	void *window;
-	int *width;
-	int *height;
-	void *wall;
-	void *player;
-	void *collectable;
-	void *map_exit;
-	void *land;
-	int rows;
-	char **map;
-} mlx_utils;
-
 typedef struct map{
 	int rows;
 	char **map;
 }map;
+
+typedef struct mlx_utils {
+	void	*mlx;
+	void	*window;
+	int		*width;
+	int		*height;
+	void	*wall;
+	void	*player;
+	void	*collectable;
+	void	*map_exit;
+	void	*land;
+	t_list *player_pos;
+	map		a;
+} mlx_utils;
+
+
 
 typedef struct measures {
 	int height;
