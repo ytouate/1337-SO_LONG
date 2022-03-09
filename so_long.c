@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/09 12:42:36 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/09 13:31:51 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void move_right(mlx_utils *a)
 {
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	a->player_pos->x_cor += 50;
+	if (a->player_pos->x_cor == get_x(a->a) - 50)
+		a->player_pos->x_cor -= 50;
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	mlx_put_image_to_window(a->mlx, a->window, a->player, a->player_pos->x_cor, a->player_pos->y_cor);
 }
@@ -52,6 +54,8 @@ void move_left(mlx_utils *a)
 {
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	a->player_pos->x_cor -= 50;
+	if (a->player_pos->x_cor == 0)
+		a->player_pos->x_cor += 50;
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	mlx_put_image_to_window(a->mlx, a->window, a->player, a->player_pos->x_cor, a->player_pos->y_cor);
 }
