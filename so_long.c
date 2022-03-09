@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/08 23:25:13 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/09 12:42:36 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,20 @@ void put_image(mlx_utils mlx_utils, map a)
 	put_collectable(mlx_utils, a);
 }
 
+boarders get_boarders_pos(mlx_utils a)
+{
+	boarders b;
+	b.boarder = get_c_pos(a.a.rows, a.a.map, '1');
+	b.collectable = get_c_pos(a.a.rows, a.a.map, 'C');
+	b.map_exit = get_c_pos(a.a.rows, a.a.map, 'E');
+	return (b);
+}
+
 void move_right(mlx_utils *a)
 {
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	a->player_pos->x_cor += 50;
+	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	mlx_put_image_to_window(a->mlx, a->window, a->player, a->player_pos->x_cor, a->player_pos->y_cor);
 }
 
@@ -32,6 +42,9 @@ void move_up(mlx_utils *a)
 {
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	a->player_pos->y_cor -= 50;
+	if (a->player_pos->y_cor == 0)
+		a->player_pos->y_cor += 50;
+	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	mlx_put_image_to_window(a->mlx, a->window, a->player, a->player_pos->x_cor, a->player_pos->y_cor);
 }
 
@@ -39,6 +52,7 @@ void move_left(mlx_utils *a)
 {
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	a->player_pos->x_cor -= 50;
+	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	mlx_put_image_to_window(a->mlx, a->window, a->player, a->player_pos->x_cor, a->player_pos->y_cor);
 }
 
@@ -46,6 +60,9 @@ void move_down(mlx_utils *a)
 {
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	a->player_pos->y_cor += 50;
+	if (a->player_pos->y_cor == 250)
+		a->player_pos->y_cor -= 50;
+	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	mlx_put_image_to_window(a->mlx, a->window, a->player, a->player_pos->x_cor, a->player_pos->y_cor);
 }
 
@@ -67,26 +84,6 @@ int key_handler(int keycode, mlx_utils *a)
 	return (a->a.rows);
 }
 
-// boarders get_boarders_pos(mlx_utils a)
-// {
-// 	int i;
-// 	int j;
-// 	int x_cor;
-// 	int y_cor;
-
-// 	x_cor = 0;
-// 	y_cor = 0;
-// 	i = 0;
-// 	j = 0;
-// 	while (i < a->a.rows)
-// 	{
-// 		j = 0;
-// 		while (ft_strlen(a.a.map[i][j]) != '\n' && ft_strlen(a.a.map[i][j]) != '\0')
-// 		{
-			
-// 		}
-// 	}
-// }
 int	main(int ac, char **av)
 {
 	int	fd;

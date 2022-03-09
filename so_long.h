@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/08 22:23:23 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/09 12:00:34 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct mlx_utils {
 	void	*land;
 	t_list *player_pos;
 	map		a;
+	boarders brd;
 } mlx_utils;
 
 
