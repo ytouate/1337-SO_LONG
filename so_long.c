@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/09 13:31:51 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/09 16:09:31 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,28 @@ boarders get_boarders_pos(mlx_utils a)
 	return (b);
 }
 
+int got_collided(t_list *pos, t_list *player_pos)
+{
+	while (pos->next)
+	{
+		if (pos->x_cor== player_pos->x_cor + 50 && pos->y_cor == player_pos->y_cor)
+		{
+			return (1);
+		}
+		pos = pos->next;
+	}
+	return (0);
+}
+
 void move_right(mlx_utils *a)
 {
+	boarders b;
+	b = get_boarders_pos(*a);
+	b.boarder = get_c_pos(a->a.rows, a->a.map, '1');
+	int will_collide = 0;
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	a->player_pos->x_cor += 50;
+	will_collide = got_collided(b.boarder, a->player_pos);
 	if (a->player_pos->x_cor == get_x(a->a) - 50)
 		a->player_pos->x_cor -= 50;
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
@@ -42,9 +60,14 @@ void move_right(mlx_utils *a)
 
 void move_up(mlx_utils *a)
 {
+	boarders b;
+	b = get_boarders_pos(*a);
+	b.boarder = get_c_pos(a->a.rows, a->a.map, '1');
+	
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	a->player_pos->y_cor -= 50;
-	if (a->player_pos->y_cor == 0)
+	printf("%d\n", got_collided(b.boarder, a->player_pos));
+	if (a->player_pos->y_cor == 0 && got_collided(b.boarder, a->player_pos) == 1)
 		a->player_pos->y_cor += 50;
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	mlx_put_image_to_window(a->mlx, a->window, a->player, a->player_pos->x_cor, a->player_pos->y_cor);
@@ -52,8 +75,14 @@ void move_up(mlx_utils *a)
 
 void move_left(mlx_utils *a)
 {
+	
+	boarders b;
+	b = get_boarders_pos(*a);
+	b.boarder = get_c_pos(a->a.rows, a->a.map, '1');
+	
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	a->player_pos->x_cor -= 50;
+	printf("%d\n", got_collided(b.boarder, a->player_pos));
 	if (a->player_pos->x_cor == 0)
 		a->player_pos->x_cor += 50;
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
@@ -62,9 +91,14 @@ void move_left(mlx_utils *a)
 
 void move_down(mlx_utils *a)
 {
+	boarders b;
+	b = get_boarders_pos(*a);
+	b.boarder = get_c_pos(a->a.rows, a->a.map, '1');
+	
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	a->player_pos->y_cor += 50;
-	if (a->player_pos->y_cor == 250)
+	printf("%d\n", got_collided(b.boarder, a->player_pos));
+	if (a->player_pos->y_cor == get_y(a->a) - 50)
 		a->player_pos->y_cor -= 50;
 	mlx_put_image_to_window(a->mlx, a->window, a->land, a->player_pos->x_cor, a->player_pos->y_cor);
 	mlx_put_image_to_window(a->mlx, a->window, a->player, a->player_pos->x_cor, a->player_pos->y_cor);
@@ -72,7 +106,6 @@ void move_down(mlx_utils *a)
 
 int key_handler(int keycode, mlx_utils *a)
 {
-	printf("%d\n", keycode);
 	if (keycode == 2)
 		move_right(a);
 	else if (keycode == 13)
