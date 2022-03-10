@@ -6,29 +6,36 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:49:10 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/08 21:18:05 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/10 17:49:20 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int get_x(map a)
+int	get_x(t_map a)
 {
 	return (ft_strlen(a.map[a.rows - 1]) * 50);
 }
 
-int get_y(map a)
+int	get_y(t_map a)
 {
 	return (a.rows * 50);
 }
 
-t_list *get_c_pos(int rows, char **map, char c)
+t_list	*get_c_pos(int rows, char **map, char c)
 {
-	int i = 0;
-	int j = 0;
-	int x_cor = 0;
-	int y_cor = 0;
-	t_list	*data = malloc(sizeof(t_list));
+	int		i;
+	int		j;
+	int		x_cor;
+	int		y_cor;
+	t_list	*data;
+
+	i = 0;
+	j = 0;
+	y_cor = 0;
+	data = malloc(sizeof(t_list));
+	if (!data)
+		exit(EXIT_FAILURE);
 	data->x_cor = 0;
 	data->y_cor = 0;
 	data->next = NULL;

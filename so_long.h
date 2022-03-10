@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/09 16:09:37 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/10 18:35:08 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,36 +24,31 @@
 # include <string.h>
 # include <errno.h>
 
-typedef struct valid_map
+typedef struct t_valid_t_map
 {
-	int collectable;
-	int map_exit;
-	int starting_pos;
-}valid_map;
+	int	collectable;
+	int	map_exit;
+	int	starting_pos;
+}t_valid_map;
 
 typedef struct s_list {
-	int x_cor;
-	int y_cor;
+	int	x_cor;
+	int	y_cor;
 	struct s_list *next;
 }t_list;
 
-typedef struct  requirs {
-	int	E;
-	int	C;
-} requirs;
-
-typedef struct map{
-	int rows;
-	char **map;
-}map;
+typedef struct t_map{
+	int		rows;
+	char	**map;
+}t_map;
 
 typedef struct boarders {
-	t_list *boarder;
-	t_list *collectable;
-	t_list *map_exit;
-} boarders;
+	t_list	*boarder;
+	t_list	*collectable_pos;
+	t_list	*map_exit;
+}t_boarders;
 
-typedef struct mlx_utils {
+typedef struct t_mlx_utils {
 	void	*mlx;
 	void	*window;
 	int		*width;
@@ -63,36 +58,40 @@ typedef struct mlx_utils {
 	void	*collectable;
 	void	*map_exit;
 	void	*land;
-	t_list *player_pos;
-	map		a;
-	boarders brd;
-} mlx_utils;
-
-
+	t_list	*player_pos;
+	t_map		a;
+	int		num_of_collects;
+}t_mlx_utils;
 
 typedef struct measures {
-	int height;
-	int width;
-}measures;
+	int	height;
+	int	width;
+}t_measures;
 
-char	**convert(int fd, char *file);
-char	*ft_strjoin(char *s1, char const *s2);
-char	*get_next_line(int fd);
-void	put_collectable(mlx_utils utils, map a);
-void	put_exit(mlx_utils utils, map a);
-void	put_wall(mlx_utils utils, map a);
-void	put_land(mlx_utils utils, map a);
-void	put_player(mlx_utils utils, map a);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-void	check_map(map a);
-void	error();
-int		ft_strchr(const char *s, int c);
-int		count_map_lines(char *file);
-int		ft_strlen(const char *s);
-int		get_x(map a);
-int		get_y(map a);
-t_list	*get_c_pos(int rows, char **map, char c);
-t_list	*ft_lstnew(int x, int y);
-valid_map	check_requirs(map a);
+char		**convert(int fd, char *file);
+char		*ft_strjoin(char *s1, char const *s2);
+char		*get_next_line(int fd);
+void		put_collectable(t_mlx_utils utils, t_map a);
+void		put_exit(t_mlx_utils utils, t_map a);
+void		put_wall(t_mlx_utils utils, t_map a);
+void		put_land(t_mlx_utils utils, t_map a);
+void		put_player(t_mlx_utils utils, t_map a);
+void		ft_lstadd_front(t_list **lst, t_list *new);
+void		check_map(t_map a);
+int			ft_strchr(const char *s, int c);
+int			count_map_lines(char *file);
+int			ft_strlen(const char *s);
+int			get_x(t_map a);
+int			get_y(t_map a);
+int			key_handler(int keycode, t_mlx_utils *a);
+int			got_collided(t_list *pos, t_list *player_pos);
+void		move_left(t_mlx_utils *a);
+void		move_down(t_mlx_utils *a);
+void		move_up(t_mlx_utils *a);
+void		move_right(t_mlx_utils *a);
+t_list		*get_c_pos(int rows, char **t_map, char c);
+t_list		*ft_lstnew(int x, int y);
+t_valid_map	check_requirs(t_map a);
+t_boarders	get_boarders_pos(t_mlx_utils a);
 
 #endif

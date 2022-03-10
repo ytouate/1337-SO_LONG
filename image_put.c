@@ -6,13 +6,13 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:49:14 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/08 13:45:25 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/10 17:53:21 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void put_collectable(mlx_utils utils, map a)
+void	put_collectable(t_mlx_utils utils, t_map a)
 {
 	t_list *pos = get_c_pos(a.rows, a.map, 'C');
 	while (pos->next)
@@ -22,7 +22,7 @@ void put_collectable(mlx_utils utils, map a)
 	}
 }
 
-void put_exit(mlx_utils utils, map a)
+void put_exit(t_mlx_utils utils, t_map a)
 {
 	t_list *pos = get_c_pos(a.rows, a.map,'E');
 	while (pos->next)
@@ -32,7 +32,7 @@ void put_exit(mlx_utils utils, map a)
 	}
 }
 
-void put_wall(mlx_utils utils, map a)
+void put_wall(t_mlx_utils utils, t_map a)
 {
 	t_list *pos = get_c_pos(a.rows, a.map, '1');
 	while (pos->next)
@@ -42,18 +42,17 @@ void put_wall(mlx_utils utils, map a)
 	}
 }
 
-void put_land(mlx_utils utils, map a)
+void put_land(t_mlx_utils utils, t_map a)
 {
-	int x_cor;
-	int y_cor;
-	int i;
-	int j;
+	int	x_cor;
+	int	y_cor;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
 	x_cor = 0;
 	y_cor = 0;
-	
 	while (i < a.rows - 1)
 	{
 		j = 0;
@@ -69,7 +68,7 @@ void put_land(mlx_utils utils, map a)
 	}
 }
 
-void put_player(mlx_utils utils, map a)
+void put_player(t_mlx_utils utils, t_map a)
 {
 	t_list *pos = get_c_pos(a.rows, a.map, 'P');
 	while (pos->next)
