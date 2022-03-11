@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/11 21:03:35 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/11 21:38:37 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	init_image(t_mlx_utils *a)
 			"/Users/ytouate/Desktop/so_long/pics/exit.xpm",
 			a->width, a->height);
 	a->player = mlx_xpm_file_to_image(a->mlx,
-			"/Users/ytouate/Desktop/so_long/pics/player_up.xpm",
+			"/Users/ytouate/Desktop/so_long/pics/player_right.xpm",
 			a->width, a->height);
 	a->collectable = mlx_xpm_file_to_image(a->mlx,
 			"/Users/ytouate/Desktop/so_long/pics/collectable.xpm",
