@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:49:14 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/10 17:53:21 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/11 20:59:26 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void put_land(t_mlx_utils utils, t_map a)
 		i++;
 		y_cor += 50;
 	}
+	mlx_put_image_to_window(utils.mlx, utils.window, utils.land, x_cor, y_cor);
 }
 
 void put_player(t_mlx_utils utils, t_map a)

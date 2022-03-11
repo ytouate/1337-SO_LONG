@@ -6,9 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
 
-# Make data base, printed on Thu Mar 10 17:26:15 2022
+# Make data base, printed on Fri Mar 11 19:51:13 2022
 
 # Variables
 
@@ -39,11 +38,11 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from `Makefile', line 16)
 OBJS = ./so_long.c ./gnl.c ./gnl_utils.c ./valid_map.c ./so_long_utils.c ./image_put.c ./position_utils.c ./libft_utils.c ./moving_utils.c 
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h2m00040n/T/vscode-ipc-896ec9a2-47a1-43fd-9659-5266fddfc5de.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h2m00040n/T/vscode-ipc-0d7ed9dd-37f4-4cb9-a09b-0e3b3a4723f2.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.u5bSCVwV9B/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.YUdqcjYkCq/Render
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
@@ -55,7 +54,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.R9fJNjpH01/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.7PsOCNQu7y/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -137,7 +136,7 @@ PAGER = less
 # environment
 LC_ALL = C
 # environment
-SECURITYSESSIONID = 18733
+SECURITYSESSIONID = 186f4
 # automatic
 ^F = $(notdir $^)
 # default
@@ -149,7 +148,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 67226
+VSCODE_PID = 24506
 # variable set hash-table stats:
 # Load=69/1024=7%, Rehash=0, Collisions=3/98=3%
 
@@ -159,9 +158,9 @@ VSCODE_PID = 67226
 
 # Directories
 
-# . (device 16777227, inode 2335670): 17 files, no impossibilities.
+# . (device 16777227, inode 2335670): 20 files, no impossibilities.
 
-# 17 files, no impossibilities in 1 directories.
+# 20 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -240,6 +239,6 @@ clean:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Mar 10 17:26:15 2022
+# Finished Make data base on Fri Mar 11 19:51:13 2022
 
  

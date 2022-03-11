@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/10 18:38:34 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/11 21:00:16 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	got_collided(t_list *pos, t_list *player_pos)
 void	init_image(t_mlx_utils *a)
 {
 	a->mlx = mlx_init();
+	a->movs = 0;
 	if (a->mlx == NULL)
 		exit(EXIT_FAILURE);
 	a->window = mlx_new_window(a->mlx, get_x(a->a),

@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/10 18:35:08 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/11 19:52:49 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
+# include <stdarg.h>
 
 typedef struct t_valid_t_map
 {
@@ -60,6 +61,7 @@ typedef struct t_mlx_utils {
 	void	*land;
 	t_list	*player_pos;
 	t_map		a;
+	int movs;
 	int		num_of_collects;
 }t_mlx_utils;
 
@@ -93,5 +95,9 @@ t_list		*get_c_pos(int rows, char **t_map, char c);
 t_list		*ft_lstnew(int x, int y);
 t_valid_map	check_requirs(t_map a);
 t_boarders	get_boarders_pos(t_mlx_utils a);
-
+void		ft_putnbr(int i);
+void    ft_printf(int n);
+void ft_putchar(int c);
+void	ft_putstr(char *s);
+char	*ft_itoa(int n);
 #endif

@@ -6,12 +6,18 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:19:41 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/10 18:42:00 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/11 19:56:46 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "so_long.h"
-
+void print_move(int *c)
+{
+	char *n;
+	n = ft_itoa(*c);
+	ft_putstr(n);
+	free (n);
+}
 void	move_left(t_mlx_utils *a)
 {
 	int			temp_x;
@@ -40,6 +46,8 @@ void	move_left(t_mlx_utils *a)
 			a->player_pos->x_cor, a->player_pos->y_cor);
 		if (got_collided(b.collectable_pos, pos))
 			a->num_of_collects -= 1;
+		a->movs++;
+		print_move(&a->movs);
 	}
 	free(pos);
 }
@@ -72,6 +80,8 @@ void	move_down(t_mlx_utils *a)
 			a->player_pos->x_cor, a->player_pos->y_cor);
 		if (got_collided(b.collectable_pos, pos))
 			a->num_of_collects -= 1;
+		a->movs++;
+		print_move(&a->movs);
 	}
 }
 
@@ -103,6 +113,8 @@ void	move_up(t_mlx_utils *a)
 			a->player_pos->x_cor, a->player_pos->y_cor);
 		if (got_collided(b.collectable_pos, pos))
 			a->num_of_collects -= 1;
+		a->movs++;
+		print_move(&a->movs);
 	}
 }
 
@@ -134,11 +146,15 @@ void	move_right(t_mlx_utils *a)
 			a->player_pos->x_cor, a->player_pos->y_cor);
 		if (got_collided(b.collectable_pos, pos))
 			a->num_of_collects -= 1;
+		a->movs++;
+		print_move(&a->movs);
 	}
 }
 
 int	key_handler(int keycode, t_mlx_utils *a)
 {
+	static int count;
+	char *n;
 	if (keycode == 2)
 		move_right(a);
 	else if (keycode == 13)

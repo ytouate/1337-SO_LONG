@@ -1,4 +1,4 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/ytouate/Desktop/so_long'
 cc  ./so_long.c ./gnl.c ./gnl_utils.c ./valid_map.c ./so_long_utils.c ./image_put.c ./position_utils.c ./libft_utils.c ./moving_utils.c  -lmlx -framework OpenGL -framework AppKit -o so_long
 make: Leaving directory `/Users/ytouate/Desktop/so_long'
