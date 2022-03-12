@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:49:10 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/10 17:49:20 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/12 09:48:21 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,7 @@ t_list	*get_c_pos(int rows, char **map, char c)
 		while (map[i][j] != '\n' && map[i][j] != '\0')
 		{
 			if (map[i][j] == c)
-			{
 				ft_lstadd_front(&data, ft_lstnew(x_cor, y_cor));
-			}
 			j++;
 			x_cor += 50;
 		}

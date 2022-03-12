@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/11 21:38:37 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/12 12:48:04 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 void	put_image(t_mlx_utils mlx_utils, t_map a)
 {
 	put_land(mlx_utils, a);
+	
 	put_wall(mlx_utils, a);
 	put_exit(mlx_utils, a);
 	put_player(mlx_utils, a);
 	put_collectable(mlx_utils, a);
+	
 }
 
 t_boarders	get_boarders_pos(t_mlx_utils a)
@@ -33,14 +35,18 @@ t_boarders	get_boarders_pos(t_mlx_utils a)
 
 int	got_collided(t_list *pos, t_list *player_pos)
 {
+	t_list *temp;
 	while (pos->next)
 	{
 		if (pos->x_cor == player_pos->x_cor && pos->y_cor == player_pos->y_cor)
 		{
 			return (1);
 		}
+		temp = pos;
 		pos = pos->next;
+		free(temp);
 	}
+	free(pos->next);
 	return (0);
 }
 
@@ -98,6 +104,8 @@ int	main(int ac, char **av)
 	mlx_utils.num_of_collects = b.collectable;
 	init_image(&mlx_utils);
 	put_image(mlx_utils, mlx_utils.a);
+	
 	mlx_key_hook(mlx_utils.window, key_handler, &mlx_utils);
+	
 	mlx_loop(mlx_utils.mlx);
 }

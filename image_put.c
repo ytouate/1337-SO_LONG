@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:49:14 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/11 21:02:56 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/12 09:29:18 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,32 @@ void	put_collectable(t_mlx_utils utils, t_map a)
 void put_exit(t_mlx_utils utils, t_map a)
 {
 	t_list *pos = get_c_pos(a.rows, a.map,'E');
+	//system("leaks so_long");
+	t_list *temp;
 	while (pos->next)
 	{
 		mlx_put_image_to_window(utils.mlx, utils.window, utils.map_exit, pos->x_cor, pos->y_cor);
+		temp = pos;
 		pos = pos->next;
+		free(temp);
 	}
+	free(pos->next);
+	temp = NULL;
 }
 
 void put_wall(t_mlx_utils utils, t_map a)
 {
 	t_list *pos = get_c_pos(a.rows, a.map, '1');
+	t_list *temp;
 	while (pos->next)
 	{
 		mlx_put_image_to_window(utils.mlx, utils.window, utils.wall, pos->x_cor, pos->y_cor);
+		temp = pos;
 		pos = pos->next;
+		free(temp);
 	}
+	free(temp->next);
+	temp = NULL;
 }
 
 void put_land(t_mlx_utils utils, t_map a)

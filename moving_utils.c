@@ -6,17 +6,19 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:19:41 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/11 21:30:21 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/12 10:06:18 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "so_long.h"
+
 void print_move(int *c)
 {
 	char *n;
 	n = ft_itoa(*c);
 	ft_putstr(n);
 	free (n);
+	n = NULL;
 }
 void	move_left(t_mlx_utils *a)
 {
@@ -152,7 +154,9 @@ void	move_right(t_mlx_utils *a)
 			a->num_of_collects -= 1;
 		a->movs++;
 		print_move(&a->movs);
+		system("leaks so_long");
 	}
+	free(pos);
 }
 
 int	key_handler(int keycode, t_mlx_utils *a)

@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Fri Mar 11 19:51:13 2022
+# Make data base, printed on Sat Mar 12 12:47:00 2022
 
 # Variables
 
@@ -27,6 +28,7 @@ VSCODE_LOG_NATIVE = false
 CURDIR := /Users/ytouate/Desktop/so_long
 # makefile
 SHELL = /bin/sh
+ 
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
@@ -38,11 +40,11 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from `Makefile', line 16)
 OBJS = ./so_long.c ./gnl.c ./gnl_utils.c ./valid_map.c ./so_long_utils.c ./image_put.c ./position_utils.c ./libft_utils.c ./moving_utils.c 
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h2m00040n/T/vscode-ipc-0d7ed9dd-37f4-4cb9-a09b-0e3b3a4723f2.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h2m00040n/T/vscode-ipc-0309a5b1-19ff-4c87-bcfa-562da6c15643.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.YUdqcjYkCq/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.5FfO6NJbTK/Render
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
@@ -54,7 +56,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.7PsOCNQu7y/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.BQ8hWajXxX/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -118,15 +120,13 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x1000000e.Electron
+XPC_SERVICE_NAME = com.microsoft.VSCode.2464
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x1015:0:0
-# environment
-COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
@@ -135,8 +135,6 @@ MAKEFILES :=
 PAGER = less
 # environment
 LC_ALL = C
-# environment
-SECURITYSESSIONID = 186f4
 # automatic
 ^F = $(notdir $^)
 # default
@@ -148,9 +146,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 24506
+VSCODE_PID = 3038
 # variable set hash-table stats:
-# Load=69/1024=7%, Rehash=0, Collisions=3/98=3%
+# Load=67/1024=7%, Rehash=0, Collisions=3/96=3%
 
 # Pattern-specific Variable Values
 
@@ -158,9 +156,9 @@ VSCODE_PID = 24506
 
 # Directories
 
-# . (device 16777227, inode 2335670): 20 files, no impossibilities.
+# . (device 16777227, inode 2335670): 19 files, no impossibilities.
 
-# 20 files, no impossibilities in 1 directories.
+# 19 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -239,6 +237,6 @@ clean:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Fri Mar 11 19:51:13 2022
+# Finished Make data base on Sat Mar 12 12:47:00 2022
 
  
