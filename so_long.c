@@ -6,30 +6,11 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 15:26:47 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 19:01:16 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	put_image(t_mlx_utils mlx_utils, t_map a)
-{
-	put_land(mlx_utils, a);
-	put_wall(mlx_utils, a);
-	put_exit(mlx_utils, a);
-	put_player(mlx_utils, a);
-	put_collectable(mlx_utils, a);
-}
-
-t_boarders	get_boarders_pos(t_mlx_utils a)
-{
-	t_boarders	b;
-
-	b.boarder = get_c_pos(a.a.rows, a.a.map, '1');
-	b.collectable_pos = get_c_pos(a.a.rows, a.a.map, 'C');
-	b.map_exit = get_c_pos(a.a.rows, a.a.map, 'E');
-	return (b);
-}
 
 void	init_image(t_mlx_utils *a)
 {

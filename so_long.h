@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 18:42:22 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 20:54:19 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct t_mlx_utils {
 	void	*collectable;
 	void	*map_exit;
 	void	*land;
+	void	*patrol;
 	t_list	*player_pos;
 	t_map	a;
 	int		movs;
@@ -103,17 +104,6 @@ void		ft_putnbr(int i);
 void		ft_printf(int n);
 void		ft_putchar(int c);
 void		ft_putstr(char *s);
-int			ft_strchr(const char *s, int c);
-int			count_map_lines(char *file);
-int			ft_strlen(const char *s);
-int			get_x(t_map a);
-int			get_y(t_map a);
-int			key_handler(int keycode, t_mlx_utils *a);
-int			got_collided(t_list *pos, t_list *player_pos);
-t_list		*get_c_pos(int rows, char **t_map, char c);
-t_list		*ft_lstnew(int x, int y);
-t_valid_map	check_requirs(t_map a);
-t_boarders	get_boarders_pos(t_mlx_utils a);
 void		check_first_line(char *line);
 void		check_last_line(char *line);
 void		map_len_error(void);
@@ -130,5 +120,21 @@ void		move_left_bonus(t_mlx_utils *a);
 void		move_down_bonus(t_mlx_utils *a);
 void		move_up_bonus(t_mlx_utils *a);
 void		move_right_bonus(t_mlx_utils *a);
+void		put_moves_to_window(t_mlx_utils *a, int *c);
+int			ft_strchr(const char *s, int c);
+int			count_map_lines(char *file);
+int			ft_strlen(const char *s);
+int			get_x(t_map a);
+int			get_y(t_map a);
+int			key_handler(int keycode, t_mlx_utils *a);
+int			got_collided(t_list *pos, t_list *player_pos);
+int			lst_size(t_list *head);
 int			key_handler_bonus(int keycode, t_mlx_utils *a);
+t_list		*get_c_pos(int rows, char **map, char c);
+t_list		*ft_lstnew(int x, int y);
+t_list		*pick_node(t_list *head, int n);
+t_list		*get_patrol_pos(t_mlx_utils *utils);
+t_valid_map	check_requirs(t_map a);
+t_boarders	get_boarders_pos(t_mlx_utils a);
+
 #endif

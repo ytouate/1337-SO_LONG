@@ -6,7 +6,7 @@
 #    By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/25 15:42:48 by ytouate           #+#    #+#              #
-#    Updated: 2022/03/13 18:40:30 by ytouate          ###   ########.fr        #
+#    Updated: 2022/03/13 20:17:00 by ytouate          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ BONUS = \
 	./so_long_bonus_utils.c \
 	./moving_utils.c	\
 	./image_update.c	\
+	./moving_utils_bonus.c
 
 PARTS = $(MANDATORY) $(BONUS)
 
@@ -53,14 +54,14 @@ clean :
 	@rm -f $(OBJS) so_long.a
 
 fclean : clean
-	rm -f  $(NAME) so_long.a
+	@rm -f  $(NAME) $(B_NAME) so_long.a
 
 re : fclean all
 
 OBBS = $(BONUS:.c=.o)
 
 $(B_NAME) : $(OBBS)
-	ar -rc so_long.a $(OBBS)
+	@ar -rc so_long.a $(OBBS)
 	@cc $(CFLAGS) -lmlx -framework OpenGL -framework AppKit so_long_bonus.c so_long.a -o $(B_NAME)
 
 bonus : $(B_NAME)

@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:49:10 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 15:03:27 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 19:00:30 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,14 @@ t_list	*get_c_pos(int rows, char **map, char c)
 		var.y_cor += 50;
 	}
 	return (data);
+}
+
+t_boarders	get_boarders_pos(t_mlx_utils a)
+{
+	t_boarders	b;
+
+	b.boarder = get_c_pos(a.a.rows, a.a.map, '1');
+	b.collectable_pos = get_c_pos(a.a.rows, a.a.map, 'C');
+	b.map_exit = get_c_pos(a.a.rows, a.a.map, 'E');
+	return (b);
 }

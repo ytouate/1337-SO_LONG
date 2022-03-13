@@ -6,11 +6,51 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:27:12 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 18:44:24 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 20:52:22 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int lst_size(t_list *head)
+{
+	int count;
+	count = 0;
+	while (head->next)
+	{
+		count++;
+		head = head->next;
+	}
+	return (count);
+}
+
+t_list *pick_node(t_list *head, int n)
+{
+	int i;
+	i = 0;
+	while (i != n)
+	{
+		head = head->next;
+		i++;
+	}
+	return (head);
+}
+
+t_list *get_patrol_pos(t_mlx_utils *utils)
+{
+	t_list	*land;
+	t_list	*patrol_pos;
+	int		size;
+	int		rand_num;
+
+	patrol_pos = pick_node(land, num);
+	land = get_c_pos(utils->a.rows, utils->a.map, '0');
+	size = lst_size(land);
+	rand_num = rand() % (size - 0 + 1);
+	utils->patrol = mlx_xpm_file_to_image(utils->mlx, "/Users/ytouate/Desktop/so_long/pics/bomb.xpm", utils->height, utils->width);
+	mlx_put_image_to_window(utils->mlx, utils->window, utils->patrol, temp->x_cor, temp->y_cor);
+	return (patrol_pos);
+}
 
 int	main(int ac, char **av)
 {
@@ -35,6 +75,7 @@ int	main(int ac, char **av)
 	mlx_utils.num_of_collects = b.collectable;
 	init_image(&mlx_utils);
 	put_image(mlx_utils, mlx_utils.a);
+	get_patrol_pos(&mlx_utils);
 	mlx_key_hook(mlx_utils.window, key_handler_bonus, &mlx_utils);
 	mlx_loop(mlx_utils.mlx);
 }

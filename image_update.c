@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 15:09:19 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 15:18:33 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 19:11:01 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,13 @@ void	update_image_down(t_mlx_utils *a, t_list *pos, t_boarders b)
 	if (got_collided(b.collectable_pos, pos))
 			a->num_of_collects -= 1;
 	a->movs++;
+}
+
+void	put_image(t_mlx_utils mlx_utils, t_map a)
+{
+	put_land(mlx_utils, a);
+	put_wall(mlx_utils, a);
+	put_exit(mlx_utils, a);
+	put_player(mlx_utils, a);
+	put_collectable(mlx_utils, a);
 }
