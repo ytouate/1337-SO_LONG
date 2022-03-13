@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:19:41 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 13:30:41 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 13:54:30 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void ft_free(t_boarders b, t_list *pos)
 	free(pos);
 }
 
-void update_image_left(t_mlx_utils *a)
+void update_image_left(t_mlx_utils *a, t_list *pos, t_boarders b)
 {
 	mlx_put_image_to_window(a->mlx, a->window, a->land,
 		a->player_pos->x_cor, a->player_pos->y_cor);
@@ -59,6 +59,8 @@ void update_image_left(t_mlx_utils *a)
 		a->player_pos->x_cor, a->player_pos->y_cor);
 	mlx_put_image_to_window(a->mlx, a->window, a->player,
 		a->player_pos->x_cor, a->player_pos->y_cor);
+	if (got_collided(b.collectable_pos, pos))
+		a->num_of_collects -= 1;
 }
 
 void update_image_right(t_mlx_utils *a)
@@ -76,15 +78,14 @@ void update_image_right(t_mlx_utils *a)
 
 void	move_left(t_mlx_utils *a)
 {
-	int			temp_x;
-	int			temp_y;
+	t_temp_pos p;
 	t_list		*pos;
 	t_boarders	b;
 
 	b = get_boarders_pos(*a);
-	temp_x = a->player_pos->x_cor - 50;
-	temp_y = a->player_pos->y_cor;
-	pos = ft_lstnew(temp_x, temp_y);
+	p.temp_x = a->player_pos->x_cor - 50;
+	p.temp_y = a->player_pos->y_cor;
+	pos = ft_lstnew(p.temp_x, p.temp_y);
 	if (got_collided(b.boarder, pos) == 0)
 	{
 		if (got_collided(b.map_exit, pos))
@@ -96,9 +97,7 @@ void	move_left(t_mlx_utils *a)
 			}
 			return ;
 		}
-		update_image_left(a);
-		if (got_collided(b.collectable_pos, pos))
-			a->num_of_collects -= 1;
+		update_image_left(a, pos, b);
 		a->movs++;
 		print_move(&a->movs);
 	}
@@ -132,7 +131,6 @@ void	move_down(t_mlx_utils *a)
 			if (a->num_of_collects <= 0)
 			{
 				ft_free(b, pos);
-				system("leaks so_long");
 				exit(EXIT_SUCCESS);
 			}
 			return ;
@@ -175,7 +173,6 @@ void	move_up(t_mlx_utils *a)
 			if (a->num_of_collects <= 0)
 			{
 				ft_free(b, pos);
-				system("leaks so_long");
 				exit(EXIT_SUCCESS);
 			}
 			return ;
@@ -206,7 +203,6 @@ void	move_right(t_mlx_utils *a)
 			if (a->num_of_collects <= 0)
 			{
 				ft_free(b, pos);
-				system("leaks so_long");
 				exit(EXIT_SUCCESS);
 			}
 			return ;
