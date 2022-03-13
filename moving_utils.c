@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:19:41 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 13:54:30 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 14:33:29 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,24 @@ void update_image_left(t_mlx_utils *a, t_list *pos, t_boarders b)
 		a->player_pos->x_cor, a->player_pos->y_cor);
 	if (got_collided(b.collectable_pos, pos))
 		a->num_of_collects -= 1;
+	a->movs++;
 }
 
-void update_image_right(t_mlx_utils *a)
+void update_image_up(t_mlx_utils *a, t_list *pos, t_boarders b)
+{
+	mlx_put_image_to_window(a->mlx, a->window, a->land,
+	a->player_pos->x_cor, a->player_pos->y_cor);
+	a->player_pos->y_cor -= 50;
+	mlx_put_image_to_window(a->mlx, a->window, a->land,
+		a->player_pos->x_cor, a->player_pos->y_cor);
+	mlx_put_image_to_window(a->mlx, a->window, a->player,
+		a->player_pos->x_cor, a->player_pos->y_cor);
+	if (got_collided(b.collectable_pos, pos))
+			a->num_of_collects -= 1;
+	a->movs++;	
+}
+
+void update_image_right(t_mlx_utils *a, t_list *pos, t_boarders b)
 {
 	mlx_put_image_to_window(a->mlx, a->window, a->land,
 		a->player_pos->x_cor, a->player_pos->y_cor);
@@ -74,6 +89,23 @@ void update_image_right(t_mlx_utils *a)
 	a->width, a->height);
 	mlx_put_image_to_window(a->mlx, a->window, a->player,
 	a->player_pos->x_cor, a->player_pos->y_cor);
+	if (got_collided(b.collectable_pos, pos))
+		a->num_of_collects -= 1;
+	a->movs++;
+}
+
+void update_image_down(t_mlx_utils *a, t_list *pos, t_boarders b)
+{
+	mlx_put_image_to_window(a->mlx, a->window, a->land,
+		a->player_pos->x_cor, a->player_pos->y_cor);
+	a->player_pos->y_cor += 50;
+	mlx_put_image_to_window(a->mlx, a->window, a->land,
+		a->player_pos->x_cor, a->player_pos->y_cor);
+	mlx_put_image_to_window(a->mlx, a->window, a->player,
+		a->player_pos->x_cor, a->player_pos->y_cor);
+	if (got_collided(b.collectable_pos, pos))
+			a->num_of_collects -= 1;
+	a->movs++;
 }
 
 void	move_left(t_mlx_utils *a)
@@ -98,21 +130,11 @@ void	move_left(t_mlx_utils *a)
 			return ;
 		}
 		update_image_left(a, pos, b);
-		a->movs++;
 		print_move(&a->movs);
 	}
 	ft_free(b, pos);
 }
-void update_image_down(t_mlx_utils *a)
-{
-	mlx_put_image_to_window(a->mlx, a->window, a->land,
-		a->player_pos->x_cor, a->player_pos->y_cor);
-	a->player_pos->y_cor += 50;
-	mlx_put_image_to_window(a->mlx, a->window, a->land,
-		a->player_pos->x_cor, a->player_pos->y_cor);
-	mlx_put_image_to_window(a->mlx, a->window, a->player,
-		a->player_pos->x_cor, a->player_pos->y_cor);
-}
+
 void	move_down(t_mlx_utils *a)
 {
 	int			temp_x;
@@ -135,26 +157,12 @@ void	move_down(t_mlx_utils *a)
 			}
 			return ;
 		}
-		update_image_down(a);
-		if (got_collided(b.collectable_pos, pos))
-			a->num_of_collects -= 1;
-		a->movs++;
-		
+		update_image_down(a, pos, b);
 		print_move(&a->movs);
 	}
 	ft_free(b, pos);
 }
 
-void update_image_up(t_mlx_utils *a)
-{
-	mlx_put_image_to_window(a->mlx, a->window, a->land,
-	a->player_pos->x_cor, a->player_pos->y_cor);
-	a->player_pos->y_cor -= 50;
-	mlx_put_image_to_window(a->mlx, a->window, a->land,
-		a->player_pos->x_cor, a->player_pos->y_cor);
-	mlx_put_image_to_window(a->mlx, a->window, a->player,
-		a->player_pos->x_cor, a->player_pos->y_cor);
-}
 void	move_up(t_mlx_utils *a)
 {
 	int			temp_x;
@@ -177,10 +185,7 @@ void	move_up(t_mlx_utils *a)
 			}
 			return ;
 		}
-		update_image_up(a);
-		if (got_collided(b.collectable_pos, pos))
-			a->num_of_collects -= 1;
-		a->movs++;	
+		update_image_up(a, pos, b);
 		print_move(&a->movs);
 	}
 	ft_free(b, pos);
@@ -207,10 +212,7 @@ void	move_right(t_mlx_utils *a)
 			}
 			return ;
 		}
-		update_image_right(a);
-		if (got_collided(b.collectable_pos, pos))
-			a->num_of_collects -= 1;
-		a->movs++;
+		update_image_right(a, pos, b);
 		print_move(&a->movs);
 	}
 	ft_free(b, pos);
