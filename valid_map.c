@@ -6,55 +6,11 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 10:20:28 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 14:54:53 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 15:05:37 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	check_first_line(char *line)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = ft_strlen(line) - 1;
-	while (i < j)
-	{
-		if (line[i] != '1')
-		{
-			write(2, "Error: map boarders must be walls\n", 35);
-			exit(EXIT_FAILURE);
-		}
-		i++;
-	}
-}
-
-void	check_last_line(char *line)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	if (line == NULL)
-		exit(1);
-	j = ft_strlen(line);
-	while (i < j)
-	{
-		if (line[i] != '1')
-		{
-			write(2, "Error: map boarders must be walls\n", 35);
-			exit(EXIT_FAILURE);
-		}
-		i++;
-	}
-}
-
-void	map_len_error(void)
-{
-	write(2, "Error: the lines of the map are not identical\n", 47);
-	exit(EXIT_FAILURE);
-}
 
 void	check_map_len(t_map a)
 {
@@ -107,7 +63,7 @@ void	check_map(t_map a)
 	return ;
 }
 
-void check_map_item(t_map *a, t_valid_map *b, t_vars *var)
+void	check_map_item(t_map *a, t_valid_map *b, t_vars *var)
 {
 	if (a->map[var->i][var->k] == 'E')
 		b->map_exit += 1;
@@ -116,7 +72,7 @@ void check_map_item(t_map *a, t_valid_map *b, t_vars *var)
 	else if (a->map[var->i][var->k] == 'P')
 		b->starting_pos += 1;
 	else if (a->map[var->i][var->k] == '0' || a->map[var->i][var->k] == '1')
-		pass ;
+		PASS ;
 	else
 	{
 		write(2, "Error invalid map item\n", 24);

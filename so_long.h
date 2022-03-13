@@ -6,14 +6,14 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 14:48:40 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 15:15:48 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # define BUFFER_SIZE 1
-# define pass (void)0
+# define PASS (void)0
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -33,9 +33,9 @@ typedef struct t_valid_t_map
 }t_valid_map;
 
 typedef struct s_list {
-	int	x_cor;
-	int	y_cor;
-	struct s_list *next;
+	int				x_cor;
+	int				y_cor;
+	struct s_list	*next;
 }t_list;
 
 typedef struct t_map{
@@ -114,4 +114,13 @@ t_list		*get_c_pos(int rows, char **t_map, char c);
 t_list		*ft_lstnew(int x, int y);
 t_valid_map	check_requirs(t_map a);
 t_boarders	get_boarders_pos(t_mlx_utils a);
+void		check_first_line(char *line);
+void		check_last_line(char *line);
+void		map_len_error(void);
+void		update_image_left(t_mlx_utils *a, t_list *pos, t_boarders b);
+void		update_image_up(t_mlx_utils *a, t_list *pos, t_boarders b);
+void		update_image_right(t_mlx_utils *a, t_list *pos, t_boarders b);
+void		update_image_down(t_mlx_utils *a, t_list *pos, t_boarders b);
+void		print_move(int *c);
+void		ft_free(t_boarders b, t_list *pos);
 #endif

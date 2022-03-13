@@ -6,7 +6,7 @@
 #    By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/25 15:42:48 by ytouate           #+#    #+#              #
-#    Updated: 2022/03/12 13:15:37 by ytouate          ###   ########.fr        #
+#    Updated: 2022/03/13 15:14:15 by ytouate          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,9 @@ OBJS = \
 	./position_utils.c  \
 	./libft_utils.c 	\
 	./moving_utils.c	\
+	./valid_map_2.c		\
+	./image_update.c		\
+	./moving_funcs.c
 
 all:
 	cc $(CFLAGS) $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)

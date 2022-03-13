@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:49:10 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 14:38:34 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 15:03:27 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,34 +24,29 @@ int	get_y(t_map a)
 
 t_list	*get_c_pos(int rows, char **map, char c)
 {
-	int		i;
-	int		j;
-	int		x_cor;
-	int		y_cor;
-	t_list	*data;
+	t_vars		var;
+	t_list		*data;
 
-	i = 0;
-	j = 0;
-	y_cor = 0;
+	var.i = -1;
+	var.y_cor = 0;
 	data = malloc(sizeof(t_list));
 	if (!data)
 		exit(EXIT_FAILURE);
 	data->x_cor = 0;
 	data->y_cor = 0;
 	data -> next = NULL;
-	while (i < rows)
+	while (++var.i < rows)
 	{
-		j = 0;
-		x_cor = 0;
-		while (map[i][j] != '\n' && map[i][j] != '\0')
+		var.j = 0;
+		var.x_cor = 0;
+		while (map[var.i][var.j] != '\n' && map[var.i][var.j] != '\0')
 		{
-			if (map[i][j] == c)
-				ft_lstadd_front(&data, ft_lstnew(x_cor, y_cor));
-			j++;
-			x_cor += 50;
+			if (map[var.i][var.j] == c)
+				ft_lstadd_front(&data, ft_lstnew(var.x_cor, var.y_cor));
+			var.j++;
+			var.x_cor += 50;
 		}
-		i++;
-		y_cor += 50;
+		var.y_cor += 50;
 	}
 	return (data);
 }

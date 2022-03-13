@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 14:34:45 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 15:16:53 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,6 @@ t_boarders	get_boarders_pos(t_mlx_utils a)
 	b.collectable_pos = get_c_pos(a.a.rows, a.a.map, 'C');
 	b.map_exit = get_c_pos(a.a.rows, a.a.map, 'E');
 	return (b);
-}
-
-int	got_collided(t_list *pos, t_list *player_pos)
-{
-	while (pos->next)
-	{
-		if (pos->x_cor == player_pos->x_cor && pos->y_cor == player_pos->y_cor)
-			return (1);
-		pos = pos->next;
-	}
-	return (0);
 }
 
 void	init_image(t_mlx_utils *a)
@@ -68,7 +57,7 @@ void	init_image(t_mlx_utils *a)
 	a->player_pos = get_c_pos(a->a.rows, a->a.map, 'P');
 }
 
-void	error()
+void	error(void)
 {
 	write(2, "Error: map not found\n", 22);
 	exit(EXIT_FAILURE);
