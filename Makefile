@@ -6,14 +6,15 @@
 #    By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/25 15:42:48 by ytouate           #+#    #+#              #
-#    Updated: 2022/03/13 15:35:08 by ytouate          ###   ########.fr        #
+#    Updated: 2022/03/13 18:40:30 by ytouate          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFLAGS = -Wall -Wextra -Werror
 NAME = so_long
+B_NAME = so_long_bonus
 
-OBJS = \
+MANDATORY = \
 	./gnl.c  	 		\
 	./gnl_utils.c   	\
 	./valid_map.c   	\
@@ -26,13 +27,42 @@ OBJS = \
 	./image_update.c	\
 	./moving_funcs.c
 
-PARTS = $(OBJS:.c=.o)
+BONUS = \
+	./valid_map.c			\
+	./valid_map_2.c			\
+	./so_long_utils.c		\
+	./gnl.c  	 		\
+	./gnl_utils.c   	\
+	./image_put.c  		\
+	./position_utils.c  \
+	./libft_utils.c 	\
+	./so_long_bonus_utils.c \
+	./moving_utils.c	\
+	./image_update.c	\
 
+PARTS = $(MANDATORY) $(BONUS)
+
+OBJS = $(PARTS:.c=.o)
 all : $(NAME)
 
-$(NAME) : $(PARTS)
-	@ar -rc so_long.a $(PARTS)
-	@cc $(CFLAGS) $(PARTS) -lmlx -framework OpenGL -framework AppKit so_long.c so_long.a -o $(NAME)
+$(NAME) : $(OBJS)
+	@ar -rc so_long.a $(OBJS)
+	@cc $(CFLAGS) -lmlx -framework OpenGL -framework AppKit so_long.c so_long.a -o $(NAME)
 
 clean :
-	@rm -f $(PARTS) so_long.a
+	@rm -f $(OBJS) so_long.a
+
+fclean : clean
+	rm -f  $(NAME) so_long.a
+
+re : fclean all
+
+OBBS = $(BONUS:.c=.o)
+
+$(B_NAME) : $(OBBS)
+	ar -rc so_long.a $(OBBS)
+	@cc $(CFLAGS) -lmlx -framework OpenGL -framework AppKit so_long_bonus.c so_long.a -o $(B_NAME)
+
+bonus : $(B_NAME)
+
+.PHONY : all clean fclean re bonus

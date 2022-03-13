@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 15:15:48 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 18:42:22 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,4 +123,12 @@ void		update_image_right(t_mlx_utils *a, t_list *pos, t_boarders b);
 void		update_image_down(t_mlx_utils *a, t_list *pos, t_boarders b);
 void		print_move(int *c);
 void		ft_free(t_boarders b, t_list *pos);
+void		put_image(t_mlx_utils mlx_utils, t_map a);
+void		init_image(t_mlx_utils *a);
+void		error(void);
+void		move_left_bonus(t_mlx_utils *a);
+void		move_down_bonus(t_mlx_utils *a);
+void		move_up_bonus(t_mlx_utils *a);
+void		move_right_bonus(t_mlx_utils *a);
+int			key_handler_bonus(int keycode, t_mlx_utils *a);
 #endif
