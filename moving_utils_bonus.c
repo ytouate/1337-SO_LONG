@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:58:36 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 19:02:44 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 22:03:02 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ void	move_left_bonus(t_mlx_utils *a)
 			return ;
 		}
 		update_image_left(a, pos, b);
+		if (a->patrol_pos->x_cor == a->player_pos->x_cor && a->patrol_pos->y_cor == a->player_pos->y_cor)
+		{
+			write (1, "You touched the trap GAME OVER\n", 32);
+			exit(EXIT_FAILURE);
+		}
 		put_moves_to_window(a, &a->movs);
 	}
 	ft_free(b, pos);
@@ -62,6 +67,11 @@ void	move_down_bonus(t_mlx_utils *a)
 			return ;
 		}
 		update_image_down(a, pos, b);
+		if (a->patrol_pos->x_cor == a->player_pos->x_cor && a->patrol_pos->y_cor == a->player_pos->y_cor)
+		{
+			write (1, "You touched the trap GAME OVER\n", 32);
+			exit(EXIT_FAILURE);
+		}
 		put_moves_to_window(a, &a->movs);
 	}
 	ft_free(b, pos);
@@ -90,6 +100,11 @@ void	move_up_bonus(t_mlx_utils *a)
 			return ;
 		}
 		update_image_up(a, pos, b);
+		if (a->patrol_pos->x_cor == a->player_pos->x_cor && a->patrol_pos->y_cor == a->player_pos->y_cor)
+		{
+			write (1, "You touched the trap GAME OVER\n", 32);
+			exit(EXIT_FAILURE);
+		}
 		put_moves_to_window(a, &a->movs);
 	}
 	ft_free(b, pos);
@@ -117,6 +132,11 @@ void	move_right_bonus(t_mlx_utils *a)
 			return ;
 		}
 		update_image_right(a, pos, b);
+		if (a->patrol_pos->x_cor == a->player_pos->x_cor && a->patrol_pos->y_cor == a->player_pos->y_cor)
+		{
+			write (1, "You touched the trap GAME OVER\n", 32);
+			exit(EXIT_FAILURE);
+		}
 		put_moves_to_window(a, &a->movs);
 	}
 	ft_free(b, pos);
