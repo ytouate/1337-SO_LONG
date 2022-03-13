@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:49:10 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/12 09:48:21 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 11:58:23 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ t_list	*get_c_pos(int rows, char **map, char c)
 	j = 0;
 	y_cor = 0;
 	data = malloc(sizeof(t_list));
-	if (!data)
+	if (!data)	
 		exit(EXIT_FAILURE);
 	data->x_cor = 0;
 	data->y_cor = 0;
-	data->next = NULL;
+	data -> next = NULL;
 	while (i < rows)
 	{
 		j = 0;
