@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:49:14 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 12:08:49 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 14:44:15 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 void	put_collectable(t_mlx_utils utils, t_map a)
 {
-	t_list *pos = get_c_pos(a.rows, a.map, 'C');
-	t_list *temp;
+	t_list	*pos;
+	t_list	*temp;
+
+	pos = get_c_pos(a.rows, a.map, 'C');
 	while (pos->next)
 	{
-		mlx_put_image_to_window(utils.mlx, utils.window, utils.collectable, pos->x_cor, pos->y_cor);
+		mlx_put_image_to_window(utils.mlx, utils.window, utils.collectable,
+			pos->x_cor, pos->y_cor);
 		temp = pos;
 		pos = pos->next;
 		free(temp);
@@ -27,13 +30,16 @@ void	put_collectable(t_mlx_utils utils, t_map a)
 	free(pos);
 }
 
-void put_exit(t_mlx_utils utils, t_map a)
+void	put_exit(t_mlx_utils utils, t_map a)
 {
-	t_list *pos = get_c_pos(a.rows, a.map,'E');
-	t_list *temp;
+	t_list	*pos;
+	t_list	*temp;
+
+	pos = get_c_pos(a.rows, a.map, 'E');
 	while (pos->next)
 	{
-		mlx_put_image_to_window(utils.mlx, utils.window, utils.map_exit, pos->x_cor, pos->y_cor);
+		mlx_put_image_to_window(utils.mlx, utils.window, utils.map_exit,
+			pos->x_cor, pos->y_cor);
 		temp = pos;
 		pos = pos->next;
 		free(temp);
@@ -42,13 +48,16 @@ void put_exit(t_mlx_utils utils, t_map a)
 	free(pos);
 }
 
-void put_wall(t_mlx_utils utils, t_map a)
+void	put_wall(t_mlx_utils utils, t_map a)
 {
-	t_list *pos = get_c_pos(a.rows, a.map, '1');
-	t_list *temp;
+	t_list	*pos;
+	t_list	*temp;
+
+	pos = get_c_pos(a.rows, a.map, '1');
 	while (pos->next)
 	{
-		mlx_put_image_to_window(utils.mlx, utils.window, utils.wall, pos->x_cor, pos->y_cor);
+		mlx_put_image_to_window(utils.mlx, utils.window, utils.wall,
+			pos->x_cor, pos->y_cor);
 		temp = pos;
 		pos = pos->next;
 		free(temp);
@@ -59,7 +68,7 @@ void put_wall(t_mlx_utils utils, t_map a)
 	temp = NULL;
 }
 
-void put_land(t_mlx_utils utils, t_map a)
+void	put_land(t_mlx_utils utils, t_map a)
 {
 	int	x_cor;
 	int	y_cor;
@@ -76,7 +85,8 @@ void put_land(t_mlx_utils utils, t_map a)
 		x_cor = 0;
 		while (a.map[i][j] != '\n' && a.map[i][j] != '\0')
 		{
-			mlx_put_image_to_window(utils.mlx, utils.window, utils.land, x_cor, y_cor);
+			mlx_put_image_to_window(utils.mlx, utils.window, utils.land,
+				x_cor, y_cor);
 			x_cor += 50;
 			j++;
 		}
@@ -85,13 +95,16 @@ void put_land(t_mlx_utils utils, t_map a)
 	}
 }
 
-void put_player(t_mlx_utils utils, t_map a)
+void	put_player(t_mlx_utils utils, t_map a)
 {
-	t_list *pos = get_c_pos(a.rows, a.map, 'P');
-	t_list *temp;
+	t_list	*pos;
+	t_list	*temp;
+
+	pos = get_c_pos(a.rows, a.map, 'P');
 	while (pos->next)
 	{
-		mlx_put_image_to_window(utils.mlx, utils.window, utils.player, pos->x_cor, pos->y_cor);
+		mlx_put_image_to_window(utils.mlx, utils.window, utils.player,
+			pos->x_cor, pos->y_cor);
 		temp = pos;
 		pos = pos -> next;
 		free(temp);

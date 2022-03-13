@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 10:20:28 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/10 17:54:17 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 14:54:53 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ void	check_last_line(char *line)
 	}
 }
 
+void	map_len_error(void)
+{
+	write(2, "Error: the lines of the map are not identical\n", 47);
+	exit(EXIT_FAILURE);
+}
+
 void	check_map_len(t_map a)
 {
 	int	i;
@@ -68,19 +74,13 @@ void	check_map_len(t_map a)
 		while (j < a.rows - 1)
 		{
 			if (k != p)
-			{
-				write(2, "Error: the lines of the map are not identical\n", 47);
-				exit(EXIT_FAILURE);
-			}
+				map_len_error();
 			j++;
 		}
 		i++;
 	}
 	if (p != ft_strlen(a.map[a.rows - 1]) + 1)
-	{
-		write(2, "Error: the lines of the map are not identical\n", 47);
-		exit(EXIT_FAILURE);
-	}
+		map_len_error();
 }
 
 void	check_map(t_map a)
@@ -107,38 +107,39 @@ void	check_map(t_map a)
 	return ;
 }
 
+void check_map_item(t_map *a, t_valid_map *b, t_vars *var)
+{
+	if (a->map[var->i][var->k] == 'E')
+		b->map_exit += 1;
+	else if (a->map[var->i][var->k] == 'C')
+		b->collectable += 1;
+	else if (a->map[var->i][var->k] == 'P')
+		b->starting_pos += 1;
+	else if (a->map[var->i][var->k] == '0' || a->map[var->i][var->k] == '1')
+		pass ;
+	else
+	{
+		write(2, "Error invalid map item\n", 24);
+		exit(EXIT_FAILURE);
+	}
+}
+
 t_valid_map	check_requirs(t_map a)
 {
-	t_valid_map	b = {0, 0, 0};
-	int			i;
-	int			j;
-	int			k;
-	int			p;
+	t_valid_map	b;
+	t_vars		var;
 
-	j = a.rows - 1;
-	i = 1;
-	while (i < j)
+	b.collectable = 0;
+	b.map_exit = 0;
+	b.starting_pos = 0;
+	var.j = a.rows - 1;
+	var.i = 0;
+	while (++var.i < var.j)
 	{
-		k = 0;
-		p = ft_strlen(a.map[i]) - 1;
-		while (k < p)
-		{
-			if (a.map[i][k] == 'E')
-				b.map_exit += 1;
-			else if (a.map[i][k] == 'C')
-				b.collectable += 1;
-			else if (a.map[i][k] == 'P')
-				b.starting_pos += 1;
-			else if (a.map[i][k] == '0' || a.map[i][k] == '1')
-				pass ;
-			else
-			{
-				write(2, "Error invalid map item\n", 24);
-				exit(EXIT_FAILURE);
-			}	
-			k++;
-		}
-		i++;
+		var.k = -1;
+		var.p = ft_strlen(a.map[var.i]) - 1;
+		while (++var.k < var.p)
+			check_map_item(&a, &b, &var);
 	}
 	if (b.collectable >= 1 && b.map_exit >= 1 && b.starting_pos == 1)
 		return (b);

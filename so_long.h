@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 13:19:00 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 14:48:40 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ typedef struct t_mlx_utils {
 	void	*map_exit;
 	void	*land;
 	t_list	*player_pos;
-	t_map		a;
-	int movs;
+	t_map	a;
+	int		movs;
 	int		num_of_collects;
 }t_mlx_utils;
 
@@ -71,12 +71,23 @@ typedef struct measures {
 }t_measures;
 
 typedef struct temp_pos {
-	int temp_x;
-	int temp_y;
-} t_temp_pos;
+	int	temp_x;
+	int	temp_y;
+}t_temp_pos;
+
+typedef struct vars {
+	int	i;
+	int	j;
+	int	x_cor;
+	int	y_cor;
+	int	k;
+	int	p;
+}t_vars;
+
 char		**convert(int fd, char *file);
 char		*ft_strjoin(char *s1, char const *s2);
 char		*get_next_line(int fd);
+char		*ft_itoa(int n);
 void		put_collectable(t_mlx_utils utils, t_map a);
 void		put_exit(t_mlx_utils utils, t_map a);
 void		put_wall(t_mlx_utils utils, t_map a);
@@ -84,6 +95,14 @@ void		put_land(t_mlx_utils utils, t_map a);
 void		put_player(t_mlx_utils utils, t_map a);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 void		check_map(t_map a);
+void		move_left(t_mlx_utils *a);
+void		move_down(t_mlx_utils *a);
+void		move_up(t_mlx_utils *a);
+void		move_right(t_mlx_utils *a);
+void		ft_putnbr(int i);
+void		ft_printf(int n);
+void		ft_putchar(int c);
+void		ft_putstr(char *s);
 int			ft_strchr(const char *s, int c);
 int			count_map_lines(char *file);
 int			ft_strlen(const char *s);
@@ -91,17 +110,8 @@ int			get_x(t_map a);
 int			get_y(t_map a);
 int			key_handler(int keycode, t_mlx_utils *a);
 int			got_collided(t_list *pos, t_list *player_pos);
-void		move_left(t_mlx_utils *a);
-void		move_down(t_mlx_utils *a);
-void		move_up(t_mlx_utils *a);
-void		move_right(t_mlx_utils *a);
 t_list		*get_c_pos(int rows, char **t_map, char c);
 t_list		*ft_lstnew(int x, int y);
 t_valid_map	check_requirs(t_map a);
 t_boarders	get_boarders_pos(t_mlx_utils a);
-void		ft_putnbr(int i);
-void    ft_printf(int n);
-void ft_putchar(int c);
-void	ft_putstr(char *s);
-char	*ft_itoa(int n);
 #endif

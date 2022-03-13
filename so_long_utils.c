@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 10:45:06 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/12 15:03:16 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 14:38:21 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,12 @@ char	**convert(int fd, char *file)
 	}
 	return (s);
 }
-void ft_putchar(int c)
+
+void	ft_putchar(int c)
 {
-    write(1, &c, 1);
+	write(1, &c, 1);
 }
+
 void	ft_putnbr(int n)
 {
 	long	nbr;
@@ -74,8 +76,9 @@ void	ft_putnbr(int n)
 		putchar(nbr + '0');
 	}
 }
-void    ft_printf(int n)
+
+void	ft_printf(int n)
 {
-    ft_putnbr(n);
-    ft_putchar('\n');
+	ft_putnbr(n);
+	ft_putchar('\n');
 }

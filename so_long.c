@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 12:24:15 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 14:34:45 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,16 @@
 void	put_image(t_mlx_utils mlx_utils, t_map a)
 {
 	put_land(mlx_utils, a);
-	// no leaks here
 	put_wall(mlx_utils, a);
-	// no leaks here
 	put_exit(mlx_utils, a);
-	// no leaks here
 	put_player(mlx_utils, a);
-	// no leaks here
 	put_collectable(mlx_utils, a);
-	// no leaks here
 }
 
 t_boarders	get_boarders_pos(t_mlx_utils a)
 {
 	t_boarders	b;
+
 	b.boarder = get_c_pos(a.a.rows, a.a.map, '1');
 	b.collectable_pos = get_c_pos(a.a.rows, a.a.map, 'C');
 	b.map_exit = get_c_pos(a.a.rows, a.a.map, 'E');
@@ -77,6 +73,7 @@ void	error()
 	write(2, "Error: map not found\n", 22);
 	exit(EXIT_FAILURE);
 }
+
 int	main(int ac, char **av)
 {
 	int			fd;
@@ -99,10 +96,7 @@ int	main(int ac, char **av)
 	check_map(mlx_utils.a);
 	mlx_utils.num_of_collects = b.collectable;
 	init_image(&mlx_utils);
-	// no leaks here 
 	put_image(mlx_utils, mlx_utils.a);
-	// no leaks here
 	mlx_key_hook(mlx_utils.window, key_handler, &mlx_utils);
-	// no leaks here
 	mlx_loop(mlx_utils.mlx);
 }
