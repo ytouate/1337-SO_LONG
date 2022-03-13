@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/12 12:57:42 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 13:19:00 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ typedef struct measures {
 	int	width;
 }t_measures;
 
+typedef struct temp_pos {
+	int temp_x;
+	int temp_y;
+} t_temp_pos;
 char		**convert(int fd, char *file);
 char		*ft_strjoin(char *s1, char const *s2);
 char		*get_next_line(int fd);

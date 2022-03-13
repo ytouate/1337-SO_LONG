@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 12:12:05 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 12:24:15 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,12 @@ t_boarders	get_boarders_pos(t_mlx_utils a)
 
 int	got_collided(t_list *pos, t_list *player_pos)
 {
-	t_list *temp;
 	while (pos->next)
 	{
 		if (pos->x_cor == player_pos->x_cor && pos->y_cor == player_pos->y_cor)
 			return (1);
-		temp = pos;
 		pos = pos->next;
-		free(temp);
 	}
-	free(pos->next);
-	free(pos);
 	return (0);
 }
 
