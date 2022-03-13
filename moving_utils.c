@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:19:41 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 13:20:16 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/13 13:30:41 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,16 @@ void	move_left(t_mlx_utils *a)
 	}
 	ft_free(b, pos);
 }
-
+void update_image_down(t_mlx_utils *a)
+{
+	mlx_put_image_to_window(a->mlx, a->window, a->land,
+		a->player_pos->x_cor, a->player_pos->y_cor);
+	a->player_pos->y_cor += 50;
+	mlx_put_image_to_window(a->mlx, a->window, a->land,
+		a->player_pos->x_cor, a->player_pos->y_cor);
+	mlx_put_image_to_window(a->mlx, a->window, a->player,
+		a->player_pos->x_cor, a->player_pos->y_cor);
+}
 void	move_down(t_mlx_utils *a)
 {
 	int			temp_x;
@@ -128,13 +137,7 @@ void	move_down(t_mlx_utils *a)
 			}
 			return ;
 		}
-		mlx_put_image_to_window(a->mlx, a->window, a->land,
-			a->player_pos->x_cor, a->player_pos->y_cor);
-		a->player_pos->y_cor += 50;
-		mlx_put_image_to_window(a->mlx, a->window, a->land,
-			a->player_pos->x_cor, a->player_pos->y_cor);
-		mlx_put_image_to_window(a->mlx, a->window, a->player,
-			a->player_pos->x_cor, a->player_pos->y_cor);
+		update_image_down(a);
 		if (got_collided(b.collectable_pos, pos))
 			a->num_of_collects -= 1;
 		a->movs++;
@@ -144,6 +147,16 @@ void	move_down(t_mlx_utils *a)
 	ft_free(b, pos);
 }
 
+void update_image_up(t_mlx_utils *a)
+{
+	mlx_put_image_to_window(a->mlx, a->window, a->land,
+	a->player_pos->x_cor, a->player_pos->y_cor);
+	a->player_pos->y_cor -= 50;
+	mlx_put_image_to_window(a->mlx, a->window, a->land,
+		a->player_pos->x_cor, a->player_pos->y_cor);
+	mlx_put_image_to_window(a->mlx, a->window, a->player,
+		a->player_pos->x_cor, a->player_pos->y_cor);
+}
 void	move_up(t_mlx_utils *a)
 {
 	int			temp_x;
@@ -167,13 +180,7 @@ void	move_up(t_mlx_utils *a)
 			}
 			return ;
 		}
-		mlx_put_image_to_window(a->mlx, a->window, a->land,
-			a->player_pos->x_cor, a->player_pos->y_cor);
-		a->player_pos->y_cor -= 50;
-		mlx_put_image_to_window(a->mlx, a->window, a->land,
-			a->player_pos->x_cor, a->player_pos->y_cor);
-		mlx_put_image_to_window(a->mlx, a->window, a->player,
-			a->player_pos->x_cor, a->player_pos->y_cor);
+		update_image_up(a);
 		if (got_collided(b.collectable_pos, pos))
 			a->num_of_collects -= 1;
 		a->movs++;	
