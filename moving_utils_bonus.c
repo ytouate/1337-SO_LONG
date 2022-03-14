@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:58:36 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 06:57:14 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/14 07:05:57 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	move_left_bonus(t_mlx_utils *a)
 		if (got_collided(b.map_exit, pos))
 		{
 			if (a->num_of_collects <= 0)
-				end_game();
+				end_game(b, pos);
 			return ;
 		}
 		update_image_left(a, pos, b);
@@ -55,7 +55,7 @@ void	move_down_bonus(t_mlx_utils *a)
 		if (got_collided(b.map_exit, pos))
 		{
 			if (a->num_of_collects <= 0)
-				end_game();
+				end_game(b, pos);
 			return ;
 		}
 		update_image_down(a, pos, b);
@@ -83,7 +83,7 @@ void	move_up_bonus(t_mlx_utils *a)
 		if (got_collided(b.map_exit, pos))
 		{
 			if (a->num_of_collects <= 0)
-				end_game();
+				end_game(b, pos);
 			return ;
 		}
 		update_image_up(a, pos, b);
@@ -110,7 +110,7 @@ void	move_right_bonus(t_mlx_utils *a)
 		if (got_collided(b.map_exit, pos))
 		{
 			if (a->num_of_collects <= 0)
-				end_game();
+				end_game(b, pos);
 			return ;
 		}
 		update_image_right(a, pos, b);
