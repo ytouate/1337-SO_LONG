@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 07:57:20 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/14 08:27:43 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ int	main(int ac, char **av)
 	init_image(&mlx_utils);
 	put_image(mlx_utils, mlx_utils.a);
 	mlx_key_hook(mlx_utils.window, key_handler, &mlx_utils);
+	mlx_hook(mlx_utils.window, 17, 0, ft_close, &mlx_utils);
 	mlx_loop(mlx_utils.mlx);
 }
