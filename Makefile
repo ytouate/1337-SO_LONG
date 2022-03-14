@@ -6,7 +6,7 @@
 #    By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/25 15:42:48 by ytouate           #+#    #+#              #
-#    Updated: 2022/03/14 07:03:39 by ytouate          ###   ########.fr        #
+#    Updated: 2022/03/14 07:37:21 by ytouate          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = so_long
 B_NAME = so_long_bonus
 
 MANDATORY = \
+	./main_utils.c		\
 	./so_long.c			\
 	./gnl.c  	 		\
 	./gnl_utils.c   	\
@@ -27,9 +28,10 @@ MANDATORY = \
 	./valid_map_2.c		\
 	./image_update.c	\
 	./moving_funcs.c	\
-	./norm_funcs_bonus.c	\
+	./norm_funcs.c		\
 
 BONUS = \
+	./main_utils.c			\
 	./so_long_bonus.c		\
 	./valid_map.c			\
 	./valid_map_2.c			\
@@ -43,11 +45,12 @@ BONUS = \
 	./moving_utils.c		\
 	./image_update.c		\
 	./moving_utils_bonus.c	\
-	./norm_funcs_bonus.c		\
+	./norm_funcs_bonus.c	\
 
 PARTS = $(MANDATORY) $(BONUS)
 
 OBJS = $(PARTS:.c=.o)
+
 all : $(NAME)
 
 $(NAME) : $(OBJS)

@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 07:06:27 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/14 07:40:24 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ void		check_format(char *s);
 void		get_patrol_pos(t_mlx_utils *utils);
 void		end_game(t_boarders b, t_list *pos);
 void		game_over(void);
-void		map_len_error(void);
 void		file_format_error(void);
 int			ft_strchr(const char *s, int c);
 int			count_map_lines(char *file);
@@ -142,4 +141,5 @@ t_list		*ft_lstnew(int x, int y);
 t_list		*pick_node(t_list *head, int n);
 t_valid_map	check_requirs(t_map a);
 t_boarders	get_boarders_pos(t_mlx_utils a);
+
 #endif

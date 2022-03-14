@@ -6,42 +6,62 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:30:29 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 20:49:40 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/14 07:38:48 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	init_image(t_mlx_utils *a)
+int	lst_size(t_list *head)
 {
-	a->mlx = mlx_init();
-	a->movs = 0;
-	if (a->mlx == NULL)
-		exit(EXIT_FAILURE);
-	a->window = mlx_new_window(a->mlx, get_x(a->a),
-			get_y(a->a), "so_long");
-	a->map_exit = mlx_xpm_file_to_image(a->mlx,
-			"/Users/ytouate/Desktop/so_long/pics/exit.xpm",
-			a->width, a->height);
-	a->player = mlx_xpm_file_to_image(a->mlx,
-			"/Users/ytouate/Desktop/so_long/pics/player_right.xpm",
-			a->width, a->height);
-	a->collectable = mlx_xpm_file_to_image(a->mlx,
-			"/Users/ytouate/Desktop/so_long/pics/collectable.xpm",
-			a->width, a->height);
-	a->land = mlx_xpm_file_to_image(a->mlx,
-			"/Users/ytouate/Desktop/so_long/pics/land.xpm",
-			a->width, a->height);
-	a->wall = mlx_xpm_file_to_image(a->mlx,
-			"/Users/ytouate/Desktop/so_long/pics/pic.xpm",
-			a->width, a->height);
-	a->player_pos = get_c_pos(a->a.rows, a->a.map, 'P');
+	int	count;
+
+	count = 0;
+	while (head->next)
+	{
+		count++;
+		head = head->next;
+	}
+	return (count);
 }
 
-void	error(void)
+t_list	*pick_node(t_list *head, int n)
 {
-	write(2, "Error: map not found\n", 22);
-	exit(EXIT_FAILURE);
+	int	i;
+
+	i = 0;
+	while (i != n)
+	{
+		head = head->next;
+		i++;
+	}
+	return (head);
+}
+
+void	get_patrol_pos(t_mlx_utils *utils)
+{
+	t_list	*land;
+	t_list	*temp;
+	int		size;
+	int		rand_num;
+
+	land = get_c_pos(utils->a.rows, utils->a.map, '0');
+	size = lst_size(land);
+	rand_num = rand() % (size - 0 + 1);
+	temp = pick_node(land, rand_num);
+	utils->patrol_pos = ft_lstnew(temp->x_cor, temp->y_cor);
+	temp = NULL;
+	utils->patrol = mlx_xpm_file_to_image(utils->mlx, "bomb.xpm",
+			utils->height, utils->width);
+	mlx_put_image_to_window(utils->mlx, utils->window, utils->patrol,
+		utils->patrol_pos->x_cor, utils->patrol_pos->y_cor);
+	while (land)
+	{
+		temp = land;
+		land = land->next;
+		free(temp);
+	}
+	free(land);
 }
 
 void	put_moves_to_window(t_mlx_utils *a, int *c)
