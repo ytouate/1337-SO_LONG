@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:27:12 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 16:00:30 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/14 16:09:45 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int ac, char **av)
 	measure.height = 50;
 	mlx_utils.height = &measure.width ;
 	mlx_utils.width = &measure.height;
+	check_format(av[1]);
 	if (ac != 2)
 		exit(EXIT_FAILURE);
 	fd = open(av[1], O_RDONLY);
@@ -37,7 +38,6 @@ int	main(int ac, char **av)
 		error();
 	mlx_utils.a.map = convert(fd, av[1]);
 	mlx_utils.a.rows = count_map_lines(av[1]);
-	check_format(av[1]);
 	b = check_requirs(mlx_utils.a);
 	check_map(mlx_utils.a);
 	mlx_utils.num_of_collects = b.collectable;

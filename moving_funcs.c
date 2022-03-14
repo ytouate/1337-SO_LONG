@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 15:13:25 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 16:02:21 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/14 16:03:22 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ void	move_right(t_mlx_utils *a)
 
 int	key_handler(int keycode, t_mlx_utils *a)
 {
-	system("leaks so_long");
 	if (keycode == 2 || keycode == 124)
 		move_right(a);
 	else if (keycode == 13 || keycode == 126)
