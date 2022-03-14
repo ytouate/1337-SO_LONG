@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 21:02:10 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/14 05:49:58 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,5 @@ t_list		*pick_node(t_list *head, int n);
 void		get_patrol_pos(t_mlx_utils *utils);
 t_valid_map	check_requirs(t_map a);
 t_boarders	get_boarders_pos(t_mlx_utils a);
-
+void	check_format(char *s);
 #endif
