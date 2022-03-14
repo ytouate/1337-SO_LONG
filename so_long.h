@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 08:28:08 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/14 18:48:28 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,25 @@ typedef struct vars {
 	int	p;
 }t_vars;
 
+typedef struct explosion {
+	void	*a;
+	void	*b;
+	void	*c;
+	void	*d;
+	void	*e;
+	void	*f;
+	void	*g;
+	void	*h;
+	void	*i;
+	void	*j;
+	void	*k;
+	void	*l;
+	void	*m;
+	void	*n;
+	void	*o;
+	void	*p;
+}t_explosion_vars;
+
 char		**convert(int fd, char *file);
 char		*ft_strjoin(char *s1, char const *s2);
 char		*get_next_line(int fd);
@@ -142,5 +161,5 @@ t_list		*ft_lstnew(int x, int y);
 t_list		*pick_node(t_list *head, int n);
 t_valid_map	check_requirs(t_map a);
 t_boarders	get_boarders_pos(t_mlx_utils a);
-
+int explode(t_mlx_utils *a);
 #endif
