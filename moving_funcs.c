@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 15:13:25 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 15:17:34 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/14 16:02:21 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,9 @@ void	move_left(t_mlx_utils *a)
 	{
 		if (got_collided(b.map_exit, pos))
 		{
+			ft_free(b, pos);
 			if (a->num_of_collects <= 0)
-			{
-				ft_free(b, pos);
 				exit(EXIT_SUCCESS);
-			}
 			return ;
 		}
 		update_image_left(a, pos, b);
@@ -54,11 +52,9 @@ void	move_down(t_mlx_utils *a)
 	{
 		if (got_collided(b.map_exit, pos))
 		{
+			ft_free(b, pos);
 			if (a->num_of_collects <= 0)
-			{
-				ft_free(b, pos);
 				exit(EXIT_SUCCESS);
-			}
 			return ;
 		}
 		update_image_down(a, pos, b);
@@ -82,11 +78,9 @@ void	move_up(t_mlx_utils *a)
 	{
 		if (got_collided(b.map_exit, pos))
 		{
+			ft_free(b, pos);
 			if (a->num_of_collects <= 0)
-			{
-				ft_free(b, pos);
 				exit(EXIT_SUCCESS);
-			}
 			return ;
 		}
 		update_image_up(a, pos, b);
@@ -109,11 +103,9 @@ void	move_right(t_mlx_utils *a)
 	{
 		if (got_collided(b.map_exit, pos))
 		{
+			ft_free(b, pos);
 			if (a->num_of_collects <= 0)
-			{
-				ft_free(b, pos);
 				exit(EXIT_SUCCESS);
-			}
 			return ;
 		}
 		update_image_right(a, pos, b);
@@ -124,6 +116,7 @@ void	move_right(t_mlx_utils *a)
 
 int	key_handler(int keycode, t_mlx_utils *a)
 {
+	system("leaks so_long");
 	if (keycode == 2 || keycode == 124)
 		move_right(a);
 	else if (keycode == 13 || keycode == 126)

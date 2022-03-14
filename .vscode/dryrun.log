@@ -1,0 +1,24 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/ytouate/Desktop/so_long'
+cc -Wall -Wextra -Werror   -c -o main_utils.o main_utils.c
+cc -Wall -Wextra -Werror   -c -o so_long.o so_long.c
+cc -Wall -Wextra -Werror   -c -o gnl.o gnl.c
+cc -Wall -Wextra -Werror   -c -o gnl_utils.o gnl_utils.c
+cc -Wall -Wextra -Werror   -c -o valid_map.o valid_map.c
+cc -Wall -Wextra -Werror   -c -o so_long_utils.o so_long_utils.c
+cc -Wall -Wextra -Werror   -c -o image_put.o image_put.c
+cc -Wall -Wextra -Werror   -c -o position_utils.o position_utils.c
+cc -Wall -Wextra -Werror   -c -o libft_utils.o libft_utils.c
+cc -Wall -Wextra -Werror   -c -o moving_utils.o moving_utils.c
+cc -Wall -Wextra -Werror   -c -o valid_map_2.o valid_map_2.c
+cc -Wall -Wextra -Werror   -c -o image_update.o image_update.c
+cc -Wall -Wextra -Werror   -c -o moving_funcs.o moving_funcs.c
+cc -Wall -Wextra -Werror   -c -o norm_funcs.o norm_funcs.c
+cc -Wall -Wextra -Werror   -c -o so_long_bonus.o so_long_bonus.c
+cc -Wall -Wextra -Werror   -c -o so_long_bonus_utils.o so_long_bonus_utils.c
+cc -Wall -Wextra -Werror   -c -o moving_utils_bonus.o moving_utils_bonus.c
+cc -Wall -Wextra -Werror   -c -o norm_funcs_bonus.o norm_funcs_bonus.c
+ar -rc so_long.a ./main_utils.o ./so_long.o ./gnl.o ./gnl_utils.o ./valid_map.o ./so_long_utils.o ./image_put.o ./position_utils.o ./libft_utils.o ./moving_utils.o ./valid_map_2.o ./image_update.o ./moving_funcs.o ./norm_funcs.o ./main_utils.o ./so_long_bonus.o ./valid_map.o ./valid_map_2.o ./so_long_utils.o ./gnl.o ./gnl_utils.o ./image_put.o ./position_utils.o ./libft_utils.o ./so_long_bonus_utils.o ./moving_utils.o ./image_update.o ./moving_utils_bonus.o ./norm_funcs_bonus.o ./norm_funcs.o
+cc -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit so_long.c so_long.a -o so_long
+make: Leaving directory `/Users/ytouate/Desktop/so_long'
+ 
