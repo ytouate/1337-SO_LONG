@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 10:20:28 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 15:05:37 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/14 08:18:32 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	check_map(t_map a)
 		k = ft_strlen(a.map[i]) - 2;
 		if (a.map[i][0] != '1' || a.map[i][k] != '1')
 		{
-			write(2, "Error: the map must be surrounded with walls\n", 47);
+			write(2, "Error: the map must be surrounded with walls\n", 46);
 			exit(EXIT_FAILURE);
 		}
 		i++;
