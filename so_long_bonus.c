@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:27:12 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 05:50:58 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/14 06:21:08 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,25 @@ t_list *pick_node(t_list *head, int n)
 void get_patrol_pos(t_mlx_utils *utils)
 {
 	t_list	*land;
+	t_list	*temp;
 	int		size;
 	int		rand_num;
 
 	land = get_c_pos(utils->a.rows, utils->a.map, '0');
 	size = lst_size(land);
 	rand_num = rand() % (size - 0 + 1);
-	utils->patrol_pos = pick_node(land, rand_num);
+	temp = pick_node(land, rand_num);
+	utils->patrol_pos = ft_lstnew(temp->x_cor, temp->y_cor);
+	temp = NULL;
 	utils->patrol = mlx_xpm_file_to_image(utils->mlx, "/Users/ytouate/Desktop/so_long/pics/bomb.xpm", utils->height, utils->width);
 	mlx_put_image_to_window(utils->mlx, utils->window, utils->patrol, utils->patrol_pos->x_cor, utils->patrol_pos->y_cor);
+	while (land)
+	{
+		temp = land;
+		land = land->next;
+		free(temp);
+	}
+	free(land);
 }
 
 int	main(int ac, char **av)

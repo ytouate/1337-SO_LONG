@@ -6,7 +6,7 @@
 #    By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/25 15:42:48 by ytouate           #+#    #+#              #
-#    Updated: 2022/03/13 20:17:00 by ytouate          ###   ########.fr        #
+#    Updated: 2022/03/14 06:09:13 by ytouate          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ MANDATORY = \
 	./moving_funcs.c
 
 BONUS = \
+	./so_long_bonus.c		\
 	./valid_map.c			\
 	./valid_map_2.c			\
 	./so_long_utils.c		\
