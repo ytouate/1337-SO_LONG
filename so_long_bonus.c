@@ -6,15 +6,16 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:27:12 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 06:21:08 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/14 06:44:57 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int lst_size(t_list *head)
+int	lst_size(t_list *head)
 {
-	int count;
+	int	count;
+
 	count = 0;
 	while (head->next)
 	{
@@ -24,9 +25,10 @@ int lst_size(t_list *head)
 	return (count);
 }
 
-t_list *pick_node(t_list *head, int n)
+t_list	*pick_node(t_list *head, int n)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (i != n)
 	{
@@ -36,7 +38,7 @@ t_list *pick_node(t_list *head, int n)
 	return (head);
 }
 
-void get_patrol_pos(t_mlx_utils *utils)
+void	get_patrol_pos(t_mlx_utils *utils)
 {
 	t_list	*land;
 	t_list	*temp;
@@ -49,8 +51,11 @@ void get_patrol_pos(t_mlx_utils *utils)
 	temp = pick_node(land, rand_num);
 	utils->patrol_pos = ft_lstnew(temp->x_cor, temp->y_cor);
 	temp = NULL;
-	utils->patrol = mlx_xpm_file_to_image(utils->mlx, "/Users/ytouate/Desktop/so_long/pics/bomb.xpm", utils->height, utils->width);
-	mlx_put_image_to_window(utils->mlx, utils->window, utils->patrol, utils->patrol_pos->x_cor, utils->patrol_pos->y_cor);
+	utils->patrol = mlx_xpm_file_to_image(utils->mlx,
+			"/Users/ytouate/Desktop/so_long/pics/bomb.xpm",
+			utils->height, utils->width);
+	mlx_put_image_to_window(utils->mlx, utils->window, utils->patrol,
+		utils->patrol_pos->x_cor, utils->patrol_pos->y_cor);
 	while (land)
 	{
 		temp = land;

@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 15:01:41 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 05:49:17 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/14 06:58:30 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,7 @@ void	check_last_line(char *line)
 	}
 }
 
-void	map_len_error(void)
-{
-	write(2, "Error: the lines of the map are not identical\n", 47);
-	exit(EXIT_FAILURE);
-}
-
-void	file_format_error(void)
-{
-	write(1, "Error: invalid file format\n", 28);
-	exit(EXIT_FAILURE);
-}
-
-void count_char(char *s)
+void	count_char(char *s)
 {
 	t_vars	var;
 
@@ -88,12 +76,12 @@ void count_char(char *s)
 void	check_format(char *s)
 {
 	int	i;
-    int	flag;
+	int	flag;
 
-    flag = 0;
-    i = 0;
+	flag = 0;
+	i = 0;
 	while (s[i] && s[i] != '.')
 		i++;
-    i++;
-    count_char(s + i);
+	i++;
+	count_char(s + i);
 }

@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:58:36 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 06:21:44 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/14 06:57:14 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,13 @@ void	move_left_bonus(t_mlx_utils *a)
 		if (got_collided(b.map_exit, pos))
 		{
 			if (a->num_of_collects <= 0)
-			{
-				ft_free(b, pos);
-				exit(EXIT_SUCCESS);
-			}
+				end_game();
 			return ;
 		}
 		update_image_left(a, pos, b);
-		if (a->patrol_pos->x_cor == a->player_pos->x_cor && a->patrol_pos->y_cor == a->player_pos->y_cor)
-		{
-			write (1, "You touched the trap GAME OVER\n", 32);
-			exit(EXIT_FAILURE);
-		}
+		if (a->patrol_pos->x_cor == a->player_pos->x_cor
+			&&a->patrol_pos->y_cor == a->player_pos->y_cor)
+			game_over();
 		put_moves_to_window(a, &a->movs);
 	}
 	ft_free(b, pos);
@@ -60,18 +55,13 @@ void	move_down_bonus(t_mlx_utils *a)
 		if (got_collided(b.map_exit, pos))
 		{
 			if (a->num_of_collects <= 0)
-			{
-				ft_free(b, pos);
-				exit(EXIT_SUCCESS);
-			}
+				end_game();
 			return ;
 		}
 		update_image_down(a, pos, b);
-		if (a->patrol_pos->x_cor == a->player_pos->x_cor && a->patrol_pos->y_cor == a->player_pos->y_cor)
-		{
-			write (1, "You touched the trap GAME OVER\n", 32);
-			exit(EXIT_FAILURE);
-		}
+		if (a->patrol_pos->x_cor == a->player_pos->x_cor
+			&& a->patrol_pos->y_cor == a->player_pos->y_cor)
+			game_over();
 		put_moves_to_window(a, &a->movs);
 	}
 	ft_free(b, pos);
@@ -93,18 +83,13 @@ void	move_up_bonus(t_mlx_utils *a)
 		if (got_collided(b.map_exit, pos))
 		{
 			if (a->num_of_collects <= 0)
-			{
-				ft_free(b, pos);
-				exit(EXIT_SUCCESS);
-			}
+				end_game();
 			return ;
 		}
 		update_image_up(a, pos, b);
-		if (a->patrol_pos->x_cor == a->player_pos->x_cor && a->patrol_pos->y_cor == a->player_pos->y_cor)
-		{
-			write (1, "You touched the trap GAME OVER\n", 32);
-			exit(EXIT_FAILURE);
-		}
+		if (a->patrol_pos->x_cor == a->player_pos->x_cor
+			&& a->patrol_pos->y_cor == a->player_pos->y_cor)
+			game_over();
 		put_moves_to_window(a, &a->movs);
 	}
 	ft_free(b, pos);
@@ -125,18 +110,13 @@ void	move_right_bonus(t_mlx_utils *a)
 		if (got_collided(b.map_exit, pos))
 		{
 			if (a->num_of_collects <= 0)
-			{
-				ft_free(b, pos);
-				exit(EXIT_SUCCESS);
-			}
+				end_game();
 			return ;
 		}
 		update_image_right(a, pos, b);
-		if (a->patrol_pos->x_cor == a->player_pos->x_cor && a->patrol_pos->y_cor == a->player_pos->y_cor)
-		{
-			write (1, "You touched the trap GAME OVER\n", 32);
-			exit(EXIT_FAILURE);
-		}
+		if (a->patrol_pos->x_cor == a->player_pos->x_cor
+			&& a->patrol_pos->y_cor == a->player_pos->y_cor)
+			game_over();
 		put_moves_to_window(a, &a->movs);
 	}
 	ft_free(b, pos);
