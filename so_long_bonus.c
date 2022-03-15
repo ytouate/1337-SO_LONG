@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:27:12 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/15 07:11:33 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/15 08:02:03 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,6 @@ void	split_main(t_mlx_utils *a, t_map b)
 	put_image(*a, b);
 	get_patrol_pos(a);
 }
-// int i = 0;
-
-// int func(t_mlx_utils *a)
-// {
-// 	// printf("am here\n");
-// 	static int i;
-// 	printf("%d\n", i);
-// 	if (i <= 30)
-// 	{
-// 		mlx_put_image_to_window(a->mlx, a->window, a->land, 0, 0);
-// 		//mlx_put_image_to_window(a->mlx, a->window, a->wall, 0, 0);
-// 	}
-// 	else if (i <= 60)
-// 	{
-// 		//mlx_put_image_to_window(a->mlx, a->window, a->land, 0, 0);
-// 		mlx_put_image_to_window(a->mlx, a->window, a->wall, 0, 0);
-// 	}
-// 	else if (i <= 120)
-// 		mlx_put_image_to_window()
-// 	else if (i == 80)
-// 		i = 0;
-// 	i++;
-// 	return (0);
-// }
 
 t_explosion_vars	init_explosion(t_mlx_utils *a)
 {
@@ -65,6 +41,29 @@ t_explosion_vars	init_explosion(t_mlx_utils *a)
 	return (var);
 }
 
+void norm_explode(t_mlx_utils *a, int *i, t_explosion_vars var)
+{
+	if (*i <= 140)
+		mlx_put_image_to_window(a->mlx, a->window, var.i, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
+	else if (*i <= 150)
+		mlx_put_image_to_window(a->mlx, a->window, var.j, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
+	else if (*i <= 160)
+		mlx_put_image_to_window(a->mlx, a->window, var.k, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
+	else if (*i <= 170)
+		mlx_put_image_to_window(a->mlx, a->window, var.l, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
+	else if (*i <= 180)
+		mlx_put_image_to_window(a->mlx, a->window, var.m, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
+	else if (*i <= 190)
+		mlx_put_image_to_window(a->mlx, a->window, var.n, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
+	else if (*i <= 200)
+		mlx_put_image_to_window(a->mlx, a->window, var.o, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
+	else if (*i <= 210)
+		mlx_put_image_to_window(a->mlx, a->window, var.p, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
+	else if (*i <= 220)
+		exit(EXIT_FAILURE);
+	*i += 1;
+}
+
 int explode(t_mlx_utils *a)
 {
 	t_explosion_vars var = init_explosion(a);
@@ -72,7 +71,7 @@ int explode(t_mlx_utils *a)
 	if (i <= 20)
 		mlx_put_image_to_window(a->mlx, a->window, var.a, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
 	else if (i <= 40)
-	mlx_put_image_to_window(a->mlx, a->window, var.b, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
+		mlx_put_image_to_window(a->mlx, a->window, var.b, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
 	else if (i <= 60)
 		mlx_put_image_to_window(a->mlx, a->window, var.c, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
 	else if (i <= 80)
@@ -85,32 +84,10 @@ int explode(t_mlx_utils *a)
 		mlx_put_image_to_window(a->mlx, a->window, var.g, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
 	else if (i <= 130)
 		mlx_put_image_to_window(a->mlx, a->window, var.h, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
-	else if (i <= 140)
-		mlx_put_image_to_window(a->mlx, a->window, var.i, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
-	else if (i <= 150)
-		mlx_put_image_to_window(a->mlx, a->window, var.j, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
-	else if (i <= 160)
-		mlx_put_image_to_window(a->mlx, a->window, var.k, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
-	else if (i <= 170)
-		mlx_put_image_to_window(a->mlx, a->window, var.l, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
-	else if (i <= 180)
-		mlx_put_image_to_window(a->mlx, a->window, var.m, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
-	else if (i <= 190)
-		mlx_put_image_to_window(a->mlx, a->window, var.n, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
-	else if (i <= 200)
-		mlx_put_image_to_window(a->mlx, a->window, var.o, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
-	else if (i <= 210)
-		mlx_put_image_to_window(a->mlx, a->window, var.p, a->patrol_pos->x_cor, a->patrol_pos->y_cor);
-	else if (i <= 220)
-		exit(EXIT_FAILURE);
-	i++;
-	//printf("%d\t%d\n", a->player_pos->x_cor, a->player_pos->y_cor);
-	//a->player_pos->x_cor = a->patrol_pos->x_cor;
-	//a->player_pos->y_cor = a->patrol_pos->y_cor;
-	//printf("%d\t%d\n", a->patrol_pos->x_cor, a->patrol_pos->y_cor);
+	norm_explode(a, &i, var);
 	return (0);
-	
 }
+
 int	main(int ac, char **av)
 {
 	int			fd;
@@ -135,7 +112,6 @@ int	main(int ac, char **av)
 	check_map(mlx_utils.a);
 	mlx_utils.num_of_collects = b.collectable;
 	split_main(&mlx_utils, mlx_utils.a);
-	
 	mlx_key_hook(mlx_utils.window, key_handler_bonus, &mlx_utils);
 	mlx_hook(mlx_utils.window, 17, 0, ft_close, &mlx_utils);
 	mlx_loop(mlx_utils.mlx);

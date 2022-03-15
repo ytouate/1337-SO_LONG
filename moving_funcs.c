@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 15:13:25 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 16:03:22 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/15 07:42:50 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	move_left(t_mlx_utils *a)
 		if (got_collided(b.map_exit, pos))
 		{
 			ft_free(b, pos);
-			if (a->num_of_collects <= 0)
+			if (a->num_of_collects < 0)
 				exit(EXIT_SUCCESS);
 			return ;
 		}
@@ -53,7 +53,7 @@ void	move_down(t_mlx_utils *a)
 		if (got_collided(b.map_exit, pos))
 		{
 			ft_free(b, pos);
-			if (a->num_of_collects <= 0)
+			if (a->num_of_collects < 0)
 				exit(EXIT_SUCCESS);
 			return ;
 		}
@@ -79,7 +79,7 @@ void	move_up(t_mlx_utils *a)
 		if (got_collided(b.map_exit, pos))
 		{
 			ft_free(b, pos);
-			if (a->num_of_collects <= 0)
+			if (a->num_of_collects < 0)
 				exit(EXIT_SUCCESS);
 			return ;
 		}
@@ -104,7 +104,7 @@ void	move_right(t_mlx_utils *a)
 		if (got_collided(b.map_exit, pos))
 		{
 			ft_free(b, pos);
-			if (a->num_of_collects <= 0)
+			if (a->num_of_collects < 0)
 				exit(EXIT_SUCCESS);
 			return ;
 		}

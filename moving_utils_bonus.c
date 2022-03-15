@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:58:36 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/15 07:35:49 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/15 07:48:47 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ void	move_up_bonus(t_mlx_utils *a)
 				mlx_loop_hook(a->mlx, explode, a);
 				a->status = 0;
 			}
-				
 			put_moves_to_window(a, &a->movs);
 		}
 	ft_free(b, pos);
