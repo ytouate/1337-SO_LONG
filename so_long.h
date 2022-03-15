@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 18:48:28 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/15 07:05:18 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct t_mlx_utils {
 	int		movs;
 	int		num_of_collects;
 	t_list	*patrol_pos;
+	int		status;
 }t_mlx_utils;
 
 typedef struct measures {

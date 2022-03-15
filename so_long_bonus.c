@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:27:12 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 18:49:55 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/15 07:11:33 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,10 @@ int explode(t_mlx_utils *a)
 	else if (i <= 220)
 		exit(EXIT_FAILURE);
 	i++;
+	//printf("%d\t%d\n", a->player_pos->x_cor, a->player_pos->y_cor);
+	//a->player_pos->x_cor = a->patrol_pos->x_cor;
+	//a->player_pos->y_cor = a->patrol_pos->y_cor;
+	//printf("%d\t%d\n", a->patrol_pos->x_cor, a->patrol_pos->y_cor);
 	return (0);
 	
 }
@@ -114,6 +118,7 @@ int	main(int ac, char **av)
 	t_measures	measure;
 	t_valid_map	b;
 
+	mlx_utils.status = 1;
 	measure.width = 50;
 	measure.height = 50;
 	mlx_utils.height = &measure.width ;
