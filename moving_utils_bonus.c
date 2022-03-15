@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:58:36 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/15 08:10:48 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/15 18:41:42 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	move_left_bonus(t_mlx_utils *a)
 	pos = ft_lstnew(p.temp_x, p.temp_y);
 	if (a->status)
 	{
-		if (got_collided(b.boarder, pos) == 0)
+		if (got_collided(b.boarder, pos, a, 'a') == 0)
 		{
-			if (got_collided(b.map_exit, pos))
+			if (got_collided(b.map_exit, pos, a, 'a'))
 			{
 				ft_free(b, pos);
-				if (a->num_of_collects < 0)
+				if (a->num_of_collects == 0)
 					exit(EXIT_SUCCESS);
 				return ;
 			}
@@ -59,12 +59,12 @@ void	move_down_bonus(t_mlx_utils *a)
 	pos = ft_lstnew(temp_x, temp_y);
 	if (a->status == 1)
 	{
-		if (got_collided(b.boarder, pos) == 0)
+		if (got_collided(b.boarder, pos, a, 'a') == 0)
 		{
-			if (got_collided(b.map_exit, pos))
+			if (got_collided(b.map_exit, pos, a, 'a'))
 			{
 				ft_free(b, pos);
-				if (a->num_of_collects < 0)
+				if (a->num_of_collects == 0)
 					exit(EXIT_SUCCESS);
 				return ;
 			}
@@ -94,12 +94,12 @@ void	move_up_bonus(t_mlx_utils *a)
 	pos = ft_lstnew(temp_x, temp_y);
 	if (a->status == 1)
 	{
-		if (got_collided(b.boarder, pos) == 0)
+		if (got_collided(b.boarder, pos, a, 'a') == 0)
 		{
-			if (got_collided(b.map_exit, pos))
+			if (got_collided(b.map_exit, pos, a, 'a'))
 			{
 				ft_free(b, pos);
-				if (a->num_of_collects < 0)
+				if (a->num_of_collects == 0)
 					exit(EXIT_SUCCESS);
 				return ;
 			}
@@ -128,12 +128,12 @@ void	move_right_bonus(t_mlx_utils *a)
 	pos = ft_lstnew(p.temp_x, p.temp_y);
 	if (a->status == 1)
 	{
-		if (got_collided(b.boarder, pos) == 0)
+		if (got_collided(b.boarder, pos, a, 'a') == 0)
 		{
-			if (got_collided(b.map_exit, pos))
+			if (got_collided(b.map_exit, pos, a, 'a'))
 			{
 				ft_free(b, pos);
-				if (a->num_of_collects < 0)
+				if (a->num_of_collects == 0)
 					exit(EXIT_SUCCESS);
 				return ;
 			}

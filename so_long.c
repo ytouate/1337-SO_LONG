@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 16:04:00 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/15 18:29:05 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int	main(int ac, char **av)
 	mlx_utils.a.rows = count_map_lines(av[1]);
 	b = check_requirs(mlx_utils.a);
 	check_map(mlx_utils.a);
+	mlx_utils.temp_collectable_pos = malloc(sizeof(t_list));
+	mlx_utils.temp_collectable_pos->x_cor = 0;
+	mlx_utils.temp_collectable_pos->y_cor = 0;
+	mlx_utils.temp_collectable_pos->next = NULL;
 	mlx_utils.num_of_collects = b.collectable;
 	init_image(&mlx_utils);
 	put_image(mlx_utils, mlx_utils.a);

@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 15:13:25 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/15 07:42:50 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/15 18:30:05 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	move_left(t_mlx_utils *a)
 	p.temp_x = a->player_pos->x_cor - 50;
 	p.temp_y = a->player_pos->y_cor;
 	pos = ft_lstnew(p.temp_x, p.temp_y);
-	if (got_collided(b.boarder, pos) == 0)
+	if (got_collided(b.boarder, pos, a, 'a') == 0)
 	{
-		if (got_collided(b.map_exit, pos))
+		if (got_collided(b.map_exit, pos, a, 'a'))
 		{
 			ft_free(b, pos);
-			if (a->num_of_collects < 0)
+			if (a->num_of_collects <= 0)
 				exit(EXIT_SUCCESS);
 			return ;
 		}
@@ -48,12 +48,12 @@ void	move_down(t_mlx_utils *a)
 	temp_x = a->player_pos->x_cor;
 	temp_y = a->player_pos->y_cor + 50;
 	pos = ft_lstnew(temp_x, temp_y);
-	if (got_collided(b.boarder, pos) == 0)
+	if (got_collided(b.boarder, pos, a, 'a') == 0)
 	{
-		if (got_collided(b.map_exit, pos))
+		if (got_collided(b.map_exit, pos, a, 'a'))
 		{
 			ft_free(b, pos);
-			if (a->num_of_collects < 0)
+			if (a->num_of_collects <= 0)
 				exit(EXIT_SUCCESS);
 			return ;
 		}
@@ -74,12 +74,12 @@ void	move_up(t_mlx_utils *a)
 	temp_x = a->player_pos->x_cor;
 	temp_y = a->player_pos->y_cor - 50;
 	pos = ft_lstnew(temp_x, temp_y);
-	if (got_collided(b.boarder, pos) == 0)
+	if (got_collided(b.boarder, pos, a, 'a') == 0)
 	{
-		if (got_collided(b.map_exit, pos))
+		if (got_collided(b.map_exit, pos, a, 'a'))
 		{
 			ft_free(b, pos);
-			if (a->num_of_collects < 0)
+			if (a->num_of_collects <= 0)
 				exit(EXIT_SUCCESS);
 			return ;
 		}
@@ -99,12 +99,12 @@ void	move_right(t_mlx_utils *a)
 	p.temp_x = a->player_pos->x_cor + 50;
 	p.temp_y = a->player_pos->y_cor;
 	pos = ft_lstnew(p.temp_x, p.temp_y);
-	if (got_collided(b.boarder, pos) == 0)
+	if (got_collided(b.boarder, pos, a, 'a') == 0)
 	{
-		if (got_collided(b.map_exit, pos))
+		if (got_collided(b.map_exit, pos, a, 'a'))
 		{
 			ft_free(b, pos);
-			if (a->num_of_collects < 0)
+			if (a->num_of_collects <= 0)
 				exit(EXIT_SUCCESS);
 			return ;
 		}

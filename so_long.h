@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/15 08:09:50 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/15 18:14:37 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,13 @@ typedef struct t_mlx_utils {
 	void	*map_exit;
 	void	*land;
 	void	*patrol;
-	t_list	*player_pos;
-	t_map	a;
+	int		status;
 	int		movs;
 	int		num_of_collects;
+	t_list	*temp_collectable_pos;
 	t_list	*patrol_pos;
-	int		status;
+	t_list	*player_pos;
+	t_map	a;
 }t_mlx_utils;
 
 typedef struct measures {
@@ -153,7 +154,7 @@ int			ft_strlen(const char *s);
 int			get_x(t_map a);
 int			get_y(t_map a);
 int			key_handler(int keycode, t_mlx_utils *a);
-int			got_collided(t_list *pos, t_list *player_pos);
+int			got_collided(t_list *pos, t_list *player_pos, t_mlx_utils *a, char c);
 int			lst_size(t_list *head);
 int			key_handler_bonus(int keycode, t_mlx_utils *a);
 int			ft_close(t_mlx_utils *a);

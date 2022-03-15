@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:19:41 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 15:18:08 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/15 18:32:36 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,33 @@ void	print_move(int *c)
 	free(n);
 }
 
-int	got_collided(t_list *pos, t_list *player_pos)
+int	pass_by(t_list *pos, t_list *player_pos)
+{
+	while (pos->next)
+	{
+		if (player_pos->x_cor == pos->x_cor && player_pos->y_cor == pos->y_cor)
+			return (1);
+		pos = pos -> next;
+	}
+	return (0);
+}
+
+int	got_collided(t_list *pos, t_list *player_pos, t_mlx_utils *a, char c)
 {
 	while (pos->next)
 	{
 		if (pos->x_cor == player_pos->x_cor && pos->y_cor == player_pos->y_cor)
-			return (1);
+		{
+			if (c == 'c')
+			{
+				if (pass_by(a->temp_collectable_pos, player_pos) == 0)
+					return (1);
+				else
+					return (0);
+			}
+			else
+				return (1);
+		}
 		pos = pos->next;
 	}
 	return (0);
