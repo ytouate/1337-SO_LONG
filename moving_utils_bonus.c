@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:58:36 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/15 07:48:47 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/15 08:10:48 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,14 @@ void	move_left_bonus(t_mlx_utils *a)
 			update_image_left(a, pos, b);
 			if (a->patrol_pos->x_cor == a->player_pos->x_cor
 				&&a->patrol_pos->y_cor == a->player_pos->y_cor)
-				{
-					mlx_loop_hook(a->mlx, explode, a);
-					a->status = 0;
-					//game_over();
-				}
-				
+			{
+				mlx_loop_hook(a->mlx, explode, a);
+				a->status = 0;
+			}
 			put_moves_to_window(a, &a->movs);
 		}
 		ft_free(b, pos);
 	}
-	
 }
 
 void	move_down_bonus(t_mlx_utils *a)
@@ -74,16 +71,14 @@ void	move_down_bonus(t_mlx_utils *a)
 			update_image_down(a, pos, b);
 			if (a->patrol_pos->x_cor == a->player_pos->x_cor
 				&& a->patrol_pos->y_cor == a->player_pos->y_cor)
-				{
-					mlx_loop_hook(a->mlx, explode, a);
-					a->status = 0;
-				}
-				
+			{
+				mlx_loop_hook(a->mlx, explode, a);
+				a->status = 0;
+			}
 			put_moves_to_window(a, &a->movs);
 		}
 		ft_free(b, pos);
 	}
-	
 }
 
 void	move_up_bonus(t_mlx_utils *a)
@@ -117,9 +112,8 @@ void	move_up_bonus(t_mlx_utils *a)
 			}
 			put_moves_to_window(a, &a->movs);
 		}
-	ft_free(b, pos);
+		ft_free(b, pos);
 	}
-	
 }
 
 void	move_right_bonus(t_mlx_utils *a)
@@ -150,12 +144,10 @@ void	move_right_bonus(t_mlx_utils *a)
 				a->status = 0;
 				mlx_loop_hook(a->mlx, explode, a);
 			}
-				
 			put_moves_to_window(a, &a->movs);
 		}
 		ft_free(b, pos);
 	}
-
 }
 
 int	key_handler_bonus(int keycode, t_mlx_utils *a)
