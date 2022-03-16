@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 07:36:23 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 07:40:57 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/16 07:53:38 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_image(t_mlx_utils *a)
 			a->width, a->height);
 	a->player = mlx_xpm_file_to_image(a->mlx, "player_right.xpm",
 			a->width, a->height);
-	a->collectable = mlx_xpm_file_to_image(a->mlx, "collectable.xpm",
+	a->collectable = mlx_xpm_file_to_image(a->mlx, "prisoner.xpm",
 			a->width, a->height);
 	a->land = mlx_xpm_file_to_image(a->mlx, "land.xpm",
 			a->width, a->height);
