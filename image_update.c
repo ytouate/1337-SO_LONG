@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 15:09:19 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/15 18:42:44 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/16 16:46:21 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	update_image_left(t_mlx_utils *a, t_list *pos, t_boarders b)
 		a->player_pos->x_cor, a->player_pos->y_cor);
 	a->player_pos->x_cor -= 50;
 	a->player = mlx_xpm_file_to_image(a->mlx, "player_left.xpm",
-			a->width, a->height);
+			a->size, a->size);
 	mlx_put_image_to_window(a->mlx, a->window, a->land,
 		a->player_pos->x_cor, a->player_pos->y_cor);
 	mlx_put_image_to_window(a->mlx, a->window, a->player,
@@ -43,7 +43,7 @@ void	update_image_up(t_mlx_utils *a, t_list *pos, t_boarders b)
 		a->player_pos->x_cor, a->player_pos->y_cor);
 	if (got_collided(b.collectable_pos, pos, a, 'c'))
 	{
-		ft_lstadd_front(&a->temp_collectable_pos,
+		ft_lstadd_front(&a->temp_collectable_pos, \
 			ft_lstnew(pos->x_cor, pos->y_cor));
 		a->num_of_collects -= 1;
 	}
@@ -58,7 +58,7 @@ void	update_image_right(t_mlx_utils *a, t_list *pos, t_boarders b)
 	mlx_put_image_to_window(a->mlx, a->window, a->land,
 		a->player_pos->x_cor, a->player_pos->y_cor);
 	a->player = mlx_xpm_file_to_image(a->mlx, "player_right.xpm",
-			a->width, a->height);
+			a->size, a->size);
 	mlx_put_image_to_window(a->mlx, a->window, a->player,
 		a->player_pos->x_cor, a->player_pos->y_cor);
 	if (got_collided(b.collectable_pos, pos, a, 'c'))

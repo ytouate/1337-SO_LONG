@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:30:29 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 07:38:48 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/16 16:45:39 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	get_patrol_pos(t_mlx_utils *utils)
 	utils->patrol_pos = ft_lstnew(temp->x_cor, temp->y_cor);
 	temp = NULL;
 	utils->patrol = mlx_xpm_file_to_image(utils->mlx, "bomb.xpm",
-			utils->height, utils->width);
+			utils->size, utils->size);
 	mlx_put_image_to_window(utils->mlx, utils->window, utils->patrol,
 		utils->patrol_pos->x_cor, utils->patrol_pos->y_cor);
 	while (land)

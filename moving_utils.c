@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:19:41 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/16 08:18:49 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/16 16:41:35 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,6 @@ void	ft_free(t_boarders b, t_list *pos)
 	free(b.collectable_pos);
 	free(b.map_exit);
 	free(pos);
-}
-
-void	print_move(int *c)
-{
-	char	*n;
-
-	n = ft_itoa(*c);
-	ft_putstr(n);
-	free(n);
 }
 
 int	pass_by(t_list *pos, t_list *player_pos)

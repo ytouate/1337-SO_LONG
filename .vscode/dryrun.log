@@ -1,7 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/ytouate/Desktop/so_long'
 cc -Wall -Wextra -Werror   -c -o main_utils.o main_utils.c
- 
 cc -Wall -Wextra -Werror   -c -o so_long.o so_long.c
 cc -Wall -Wextra -Werror   -c -o gnl.o gnl.c
 cc -Wall -Wextra -Werror   -c -o gnl_utils.o gnl_utils.c

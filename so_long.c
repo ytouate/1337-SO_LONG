@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:45 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/15 18:29:05 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/16 16:44:13 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,12 @@
 int	main(int ac, char **av)
 {
 	int			fd;
+	int			temp;
 	t_mlx_utils	mlx_utils;
-	t_measures	measure;
 	t_valid_map	b;
 
-	measure.width = 50;
-	measure.height = 50;
-	mlx_utils.height = &measure.width ;
-	mlx_utils.width = &measure.height;
+	temp = 50;
+	mlx_utils.size = &temp;
 	if (ac != 2)
 		exit(EXIT_FAILURE);
 	check_format(av[1]);
@@ -34,9 +32,7 @@ int	main(int ac, char **av)
 	b = check_requirs(mlx_utils.a);
 	check_map(mlx_utils.a);
 	mlx_utils.temp_collectable_pos = malloc(sizeof(t_list));
-	mlx_utils.temp_collectable_pos->x_cor = 0;
-	mlx_utils.temp_collectable_pos->y_cor = 0;
-	mlx_utils.temp_collectable_pos->next = NULL;
+	mlx_utils.temp_collectable_pos = ft_lstnew(0, 0);
 	mlx_utils.num_of_collects = b.collectable;
 	init_image(&mlx_utils);
 	put_image(mlx_utils, mlx_utils.a);

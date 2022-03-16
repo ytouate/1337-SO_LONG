@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 07:32:06 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/16 07:20:42 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/16 16:41:26 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,13 @@ void	file_format_error(void)
 {
 	write(1, "Error: invalid file format\n", 28);
 	exit(EXIT_FAILURE);
+}
+
+void	print_move(int *c)
+{
+	char	*n;
+
+	n = ft_itoa(*c);
+	ft_putstr(n);
+	free(n);
 }
