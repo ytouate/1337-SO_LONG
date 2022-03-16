@@ -6,22 +6,25 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 10:49:10 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/13 19:00:30 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/16 16:57:43 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*returns the x size of the window*/
 int	get_x(t_map a)
 {
 	return (ft_strlen(a.map[a.rows - 1]) * 50);
 }
 
+/*returns the y size of the window */
 int	get_y(t_map a)
 {
 	return (a.rows * 50);
 }
 
+/*returns a list with all the position of c in the map */
 t_list	*get_c_pos(int rows, char **map, char c)
 {
 	t_vars		var;
@@ -51,6 +54,7 @@ t_list	*get_c_pos(int rows, char **map, char c)
 	return (data);
 }
 
+/*returns the positions of the exit , collectable and walls */
 t_boarders	get_boarders_pos(t_mlx_utils a)
 {
 	t_boarders	b;

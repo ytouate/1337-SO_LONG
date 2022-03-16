@@ -6,12 +6,12 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 10:20:28 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 08:18:32 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/16 16:50:59 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+/* checks weather the lines of the map have the same lenght */
 void	check_map_len(t_map a)
 {
 	int	i;
@@ -39,6 +39,7 @@ void	check_map_len(t_map a)
 		map_len_error();
 }
 
+/*checks if the map is valid */
 void	check_map(t_map a)
 {
 	int	i;
@@ -63,6 +64,7 @@ void	check_map(t_map a)
 	return ;
 }
 
+/*checks if the map has an invalid item */
 void	check_map_item(t_map *a, t_valid_map *b, t_vars *var)
 {
 	if (a->map[var->i][var->k] == 'E')
@@ -80,6 +82,7 @@ void	check_map_item(t_map *a, t_valid_map *b, t_vars *var)
 	}
 }
 
+/*checks the map requirements */
 t_valid_map	check_requirs(t_map a)
 {
 	t_valid_map	b;

@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:30:29 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/16 16:45:39 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/16 16:56:06 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	lst_size(t_list *head)
 	return (count);
 }
 
+/*returns a random node depending on the given number */
 t_list	*pick_node(t_list *head, int n)
 {
 	int	i;
@@ -38,6 +39,7 @@ t_list	*pick_node(t_list *head, int n)
 	return (head);
 }
 
+/*sets the patrol position randomly using the rand function */
 void	get_patrol_pos(t_mlx_utils *utils)
 {
 	t_list	*land;
@@ -46,7 +48,7 @@ void	get_patrol_pos(t_mlx_utils *utils)
 	int		rand_num;
 
 	land = get_c_pos(utils->a.rows, utils->a.map, '0');
-	size = lst_size(land);
+	size = lst_size(land) - 1;
 	rand_num = rand() % (size - 0 + 1);
 	temp = pick_node(land, rand_num);
 	utils->patrol_pos = ft_lstnew(temp->x_cor, temp->y_cor);
@@ -64,6 +66,7 @@ void	get_patrol_pos(t_mlx_utils *utils)
 	free(land);
 }
 
+/*printf the number of moves on the screen */
 void	put_moves_to_window(t_mlx_utils *a, int *c)
 {
 	char	*n;

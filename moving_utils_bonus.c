@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 18:58:36 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/16 16:39:42 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/16 17:01:33 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void	move_right_bonus(t_mlx_utils *a)
 	ft_free(b, pos);
 }
 
+/*the event handler function which calls the functions above*/
 int	key_handler_bonus(int keycode, t_mlx_utils *a)
 {
 	if (keycode == 2 || keycode == 124)

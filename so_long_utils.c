@@ -6,12 +6,13 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 10:45:06 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/16 16:03:33 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/16 16:53:18 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*returns the number of lines in the map */
 int	count_map_lines(char *file)
 {
 	char	*temp;
@@ -32,6 +33,7 @@ int	count_map_lines(char *file)
 	return (count);
 }
 
+/*converts the map from a file to a 2d array */
 char	**convert(int fd, char *file)
 {
 	int		i;

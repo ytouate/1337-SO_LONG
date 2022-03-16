@@ -6,12 +6,13 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:19:41 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/16 16:41:35 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/16 17:00:52 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*frees */
 void	ft_free(t_boarders b, t_list *pos)
 {
 	t_list	*temp;
@@ -40,6 +41,7 @@ void	ft_free(t_boarders b, t_list *pos)
 	free(pos);
 }
 
+/*checks if the player has already passed by the collectable pos*/
 int	pass_by(t_list *pos, t_list *player_pos)
 {
 	while (pos->next)
@@ -51,6 +53,7 @@ int	pass_by(t_list *pos, t_list *player_pos)
 	return (0);
 }
 
+/*checks if the player got collided with an map item i provided */
 int	got_collided(t_list *pos, t_list *player_pos, t_mlx_utils *a, char c)
 {
 	while (pos->next)

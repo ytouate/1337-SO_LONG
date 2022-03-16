@@ -6,12 +6,13 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 15:01:41 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/14 06:58:30 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/16 16:52:38 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*checks the first line if valid or not*/
 void	check_first_line(char *line)
 {
 	int	i;
@@ -30,6 +31,7 @@ void	check_first_line(char *line)
 	}
 }
 
+/*checks the last line if valid or not */
 void	check_last_line(char *line)
 {
 	int	i;
@@ -50,6 +52,7 @@ void	check_last_line(char *line)
 	}
 }
 
+/*checks if the file given if it is .ber */
 void	count_char(char *s)
 {
 	t_vars	var;
@@ -73,6 +76,7 @@ void	count_char(char *s)
 		file_format_error();
 }
 
+/*checks the format of the file */
 void	check_format(char *s)
 {
 	int	i;
