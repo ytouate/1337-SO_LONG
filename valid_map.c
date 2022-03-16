@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 10:20:28 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/16 16:50:59 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/16 19:50:38 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,5 @@ t_valid_map	check_requirs(t_map a)
 		write(2, "Error: the map requires are not fullfiled\n", 43);
 		exit(EXIT_FAILURE);
 	}
+	
 }
