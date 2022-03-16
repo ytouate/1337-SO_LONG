@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/16 16:44:46 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/03/16 17:04:57 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,8 @@ int			ft_strlen(const char *s);
 int			get_x(t_map a);
 int			get_y(t_map a);
 int			key_handler(int keycode, t_mlx_utils *a);
-int			got_collided(t_list *pos, t_list *player_pos, t_mlx_utils *a, char c);
+int			got_collided(t_list *pos, t_list *player_pos,
+				t_mlx_utils *a, char c);
 int			lst_size(t_list *head);
 int			key_handler_bonus(int keycode, t_mlx_utils *a);
 int			ft_close(t_mlx_utils *a);
