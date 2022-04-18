@@ -6,7 +6,7 @@
 /*   By: ytouate <ytouate@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:42:50 by ytouate           #+#    #+#             */
-/*   Updated: 2022/03/16 17:04:57 by ytouate          ###   ########.fr       */
+/*   Updated: 2022/04/18 23:40:26 by ytouate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,25 +81,6 @@ typedef struct vars {
 	int	k;
 	int	p;
 }t_vars;
-
-typedef struct explosion {
-	void	*a;
-	void	*b;
-	void	*c;
-	void	*d;
-	void	*e;
-	void	*f;
-	void	*g;
-	void	*h;
-	void	*i;
-	void	*j;
-	void	*k;
-	void	*l;
-	void	*m;
-	void	*n;
-	void	*o;
-	void	*p;
-}t_explosion_vars;
 
 char		**convert(int fd, char *file);
 char		*ft_strjoin(char *s1, char const *s2);
